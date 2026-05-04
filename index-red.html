@@ -1,0 +1,3083 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BIT Solution — Secure. Scalable. Smart. IT Solutions for Australia</title>
+  <meta name="description" content="BIT Solution is a trusted Australian IT services company delivering managed IT, cyber security, cloud solutions, VOIP, and 24/7 support for businesses in Sydney, Melbourne, Brisbane, and Perth." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700;800&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <style>
+    /* ============================================================
+       RESET & TOKENS
+    ============================================================ */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --blue:      #C8323F;
+      --navy:      #0E2B5C;
+      --light-bg:  #EAE0E0;
+      --white:     #FFFFFF;
+      --body-text: #4B5863;
+      --dark-text: #575A5F;
+      --heading:   #0E2B5C;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter Tight', sans-serif;
+      color: var(--body-text);
+      background: var(--light-bg) url('bg-hero-red.jpg') center top / cover fixed;
+      line-height: 1.65;
+      overflow-x: hidden;
+    }
+
+    a { text-decoration: none; color: inherit; }
+    ul { list-style: none; }
+    img { display: block; max-width: 100%; }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 5%;
+    }
+
+    /* ============================================================
+       REVEAL ANIMATIONS
+    ============================================================ */
+    .reveal {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.45s ease, transform 0.45s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .reveal-delay-1 { transition-delay: 0.08s; }
+    .reveal-delay-2 { transition-delay: 0.16s; }
+    .reveal-delay-3 { transition-delay: 0.24s; }
+    .reveal-delay-4 { transition-delay: 0.32s; }
+
+    /* ============================================================
+       SECTION LABEL (two dots + caps text)
+    ============================================================ */
+    .section-label {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 2px;
+      color: var(--blue);
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+    .section-label .dots {
+      display: flex;
+      gap: 4px;
+    }
+    .section-label .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--blue);
+    }
+    .section-label .dot:first-child {
+      background: var(--navy);
+    }
+
+    /* ============================================================
+       BUTTONS
+    ============================================================ */
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--blue);
+      color: var(--white);
+      font-family: 'Inter Tight', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      padding: 12px 28px;
+      border-radius: 8px;
+      border: 2px solid var(--blue);
+      cursor: pointer;
+      transition: background 0.2s, transform 0.15s;
+    }
+    .btn-primary:hover { background: #2278b5; border-color: #2278b5; transform: translateY(-1px); }
+
+    .btn-outline {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: transparent;
+      color: var(--navy);
+      font-family: 'Inter Tight', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      padding: 12px 28px;
+      border-radius: 8px;
+      border: 2px solid var(--navy);
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s, transform 0.15s;
+    }
+    .btn-outline:hover { background: var(--navy); color: var(--white); transform: translateY(-1px); }
+
+    .btn-outline-blue {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: transparent;
+      color: var(--blue);
+      font-family: 'Inter Tight', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      padding: 12px 28px;
+      border-radius: 8px;
+      border: 2px solid var(--blue);
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s, transform 0.15s;
+    }
+    .btn-outline-blue:hover { background: var(--blue); color: var(--white); transform: translateY(-1px); }
+
+    .btn-white {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--white);
+      color: var(--blue);
+      font-family: 'Inter Tight', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      padding: 12px 28px;
+      border-radius: 8px;
+      border: 2px solid var(--white);
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s, transform 0.15s;
+    }
+    .btn-white:hover { background: transparent; color: var(--white); transform: translateY(-1px); }
+
+    .btn-white-outline {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: transparent;
+      color: var(--white);
+      font-family: 'Inter Tight', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      padding: 12px 28px;
+      border-radius: 8px;
+      border: 2px solid rgba(255,255,255,0.7);
+      cursor: pointer;
+      transition: background 0.2s, border-color 0.2s, transform 0.15s;
+    }
+    .btn-white-outline:hover { border-color: var(--white); background: rgba(255,255,255,0.1); transform: translateY(-1px); }
+
+    /* ============================================================
+       1. TOP UTILITY BAR
+    ============================================================ */
+    .utility-bar {
+      background: var(--navy);
+      color: var(--white);
+      font-size: 13px;
+      font-weight: 400;
+      height: 36px;
+      display: flex;
+      align-items: center;
+    }
+    .utility-bar .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+    }
+    .utility-bar a {
+      color: rgba(255,255,255,0.75);
+      font-weight: 500;
+      transition: color 0.15s;
+    }
+    .utility-bar a:hover { color: var(--white); }
+
+    /* ============================================================
+       2. NAVIGATION
+    ============================================================ */
+    .nav {
+      background: var(--white);
+      border-bottom: 1px solid var(--light-bg);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      transition: box-shadow 0.25s;
+    }
+    .nav.scrolled {
+      box-shadow: 0 2px 16px rgba(14,43,92,0.10);
+    }
+    .nav .container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 68px;
+    }
+
+    /* Logo */
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+    }
+
+    /* Nav links */
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+    }
+    .nav-links > a,
+    .nav-links > .nav-dropdown-wrap > a {
+      font-size: 0.92rem;
+      font-weight: 500;
+      color: var(--body-text);
+      transition: color 0.15s;
+      position: relative;
+    }
+    .nav-links > a::after,
+    .nav-links > .nav-dropdown-wrap > a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--blue);
+      transition: width 0.2s;
+    }
+    .nav-links > a:hover,
+    .nav-links > .nav-dropdown-wrap > a:hover { color: var(--blue); }
+    .nav-links > a:hover::after,
+    .nav-links > .nav-dropdown-wrap > a:hover::after { width: 100%; }
+    .nav-links > a.active,
+    .nav-links > .nav-dropdown-wrap > a.active { color: var(--blue); }
+    .nav-links > a.active::after,
+    .nav-links > .nav-dropdown-wrap > a.active::after { width: 100%; }
+
+    /* Services dropdown */
+    .nav-dropdown-wrap {
+      position: relative;
+    }
+    .nav-dropdown-wrap > a {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      cursor: pointer;
+    }
+    .nav-dropdown-wrap > a .chevron {
+      font-size: 0.65rem;
+      transition: transform 0.2s;
+      line-height: 1;
+    }
+    .nav-dropdown-wrap:hover > a .chevron { transform: rotate(180deg); }
+
+    .nav-dropdown {
+      position: absolute;
+      top: calc(100% + 14px);
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--white);
+      border: 1px solid var(--light-bg);
+      border-radius: 8px;
+      box-shadow: 0 8px 32px rgba(14,43,92,0.13);
+      min-width: 240px;
+      padding: 8px 0;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.18s, transform 0.18s;
+      transform: translateX(-50%) translateY(-6px);
+    }
+    .nav-dropdown-wrap:hover .nav-dropdown {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateX(-50%) translateY(0);
+    }
+    .nav-dropdown a {
+      display: block;
+      padding: 9px 20px;
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--navy);
+      transition: background 0.15s, color 0.15s;
+    }
+    .nav-dropdown a:hover {
+      background: var(--light-bg);
+      color: var(--blue);
+    }
+
+    /* Hamburger */
+    .nav-hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 4px;
+      background: none;
+      border: none;
+    }
+    .nav-hamburger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--navy);
+      border-radius: 2px;
+      transition: all 0.25s;
+    }
+    .nav-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .nav-hamburger.open span:nth-child(2) { opacity: 0; }
+    .nav-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    /* Mobile menu */
+    .nav-mobile {
+      display: none;
+      background: var(--white);
+      border-bottom: 1px solid var(--light-bg);
+      padding: 20px 5%;
+    }
+    .nav-mobile.open { display: flex; flex-direction: column; gap: 16px; }
+    .nav-mobile a {
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: var(--body-text);
+      padding: 8px 0;
+      border-bottom: 1px solid var(--light-bg);
+      transition: color 0.15s;
+    }
+    .nav-mobile a:hover { color: var(--blue); }
+    .nav-mobile .btn-primary { width: fit-content; border-bottom: none; }
+    .nav-mobile .mobile-services-label {
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--blue);
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      padding: 4px 0 2px;
+      border-bottom: none;
+    }
+    .nav-mobile .mobile-service-link {
+      padding-left: 12px;
+      font-size: 0.88rem;
+      color: var(--body-text);
+    }
+
+    /* ============================================================
+       3. HERO
+    ============================================================ */
+    .hero {
+      background: transparent;
+      padding: 80px 5% 70px;
+      overflow: hidden;
+    }
+    .hero .container {
+      display: grid;
+      grid-template-columns: 55% 45%;
+      align-items: center;
+      gap: 48px;
+      max-width: 1400px;
+      padding: 0;
+    }
+
+    .hero-content {}
+
+    .hero-eyebrow {
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 2.5px;
+      color: var(--blue);
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+
+    .hero-h1 {
+      font-size: clamp(2.4rem, 4.5vw, 3.8rem);
+      font-weight: 800;
+      color: var(--navy);
+      line-height: 1.1;
+      letter-spacing: -1px;
+      margin-bottom: 20px;
+    }
+    .hero-h1 .accent { color: var(--blue); display: block; }
+
+    .hero-body {
+      font-size: 0.95rem;
+      color: var(--body-text);
+      max-width: 520px;
+      margin-bottom: 32px;
+      line-height: 1.7;
+    }
+
+    .hero-cta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    /* Stats strip below hero CTA */
+    .hero-stats {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 24px;
+      margin-top: 40px;
+      padding-top: 32px;
+      border-top: 1px solid rgba(14,43,92,0.12);
+    }
+    .hero-stat-item {}
+    .hero-stat-num {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--navy);
+      line-height: 1;
+    }
+    .hero-stat-label {
+      font-size: 0.75rem;
+      font-weight: 500;
+      color: var(--body-text);
+      margin-top: 4px;
+    }
+
+    /* -------- Globe Visual -------- */
+    .hero-globe {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      aspect-ratio: 1;
+      max-width: 420px;
+      margin: 0 auto;
+    }
+
+    .globe-svg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    /* Network node circles */
+    .globe-node {
+      position: absolute;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: var(--white);
+      border: 2px solid var(--blue);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.65rem;
+      font-weight: 700;
+      color: var(--blue);
+      z-index: 2;
+      box-shadow: 0 2px 12px rgba(43,136,204,0.18);
+    }
+
+    /* No pulse — nodes are static */
+
+    /* Globe tooltip */
+    .globe-tooltip {
+      position: absolute;
+      background: rgba(14,43,92,0.93);
+      color: #e8f2ff;
+      border-radius: 10px;
+      padding: 10px 14px;
+      font-size: 0.78rem;
+      font-family: 'Inter Tight', sans-serif;
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 0.18s ease, transform 0.18s ease;
+      z-index: 20;
+      white-space: nowrap;
+      box-shadow: 0 4px 20px rgba(43,136,204,0.3);
+      border: 1px solid rgba(43,136,204,0.35);
+    }
+    .globe-tooltip.visible { opacity: 1; }
+    .globe-tooltip strong {
+      display: block;
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: #5BBDFF;
+      margin-bottom: 3px;
+    }
+    .globe-tooltip .pin-hint {
+      font-size: 0.68rem;
+      opacity: 0.5;
+      margin-top: 4px;
+    }
+
+    /* Node hover / pinned */
+    .globe-node.hovered,
+    .globe-node.pinned {
+      background: var(--blue) !important;
+      color: #fff !important;
+      outline: 3px solid rgba(91,189,255,0.55);
+      outline-offset: 3px;
+      box-shadow: 0 0 22px rgba(43,136,204,0.6), 0 4px 16px rgba(43,136,204,0.4) !important;
+      animation: none !important;
+      z-index: 5;
+    }
+
+    /* Active line glow */
+    .globe-line.active-line {
+      stroke-opacity: 0.85 !important;
+      stroke-width: 2.2 !important;
+    }
+    .globe-line.dim-line {
+      stroke-opacity: 0.05 !important;
+    }
+
+    /* Node positions */
+    .globe-node[data-i="0"]  { top: 6%;  left: 50%; transform: translateX(-50%); }
+    .globe-node[data-i="1"]  { top: 21%; right: 8%; }
+    .globe-node[data-i="2"]  { top: 55%; right: 3%; }
+    .globe-node[data-i="3"]  { bottom: 8%; right: 24%; }
+    .globe-node[data-i="4"]  { bottom: 8%; left: 24%; }
+    .globe-node[data-i="5"]  { top: 55%; left: 3%; }
+    .globe-node[data-i="6"]  { top: 21%; left: 8%; }
+    .globe-node[data-i="7"]  { top: 44%; left: 50%; transform: translateX(-50%); }
+
+    /* ============================================================
+       4. FEATURE CARDS STRIP
+    ============================================================ */
+    .features {
+      background: transparent;
+      padding: 52px 5%;
+    }
+    .features .container {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+      max-width: 1400px;
+      padding: 0;
+    }
+
+    .feature-card {
+      background: rgba(255,255,255,0.55);
+      border: 1px solid rgba(43,136,204,0.18);
+      border-radius: 14px;
+      padding: 18px 22px 16px;
+      transition: border-color 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease;
+      cursor: default;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 2px 14px rgba(14,43,92,0.08);
+    }
+    .feature-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--navy), var(--blue));
+      border-radius: 16px 16px 0 0;
+    }
+    .feature-card:hover {
+      border-color: rgba(43,136,204,0.38);
+      box-shadow: 0 8px 32px rgba(14,43,92,0.14);
+      transform: translateY(-4px);
+    }
+
+    /* Icon + metric row */
+    .fc-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+    .fc-icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, var(--navy) 0%, #7A1020 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: opacity 0.25s ease;
+    }
+    .feature-card:hover .fc-icon { opacity: 0.85; }
+    .fc-icon svg { width: 20px; height: 20px; filter: brightness(0) invert(1); opacity: 0.9; }
+
+    .fc-metric { text-align: right; }
+    .fc-num {
+      font-family: 'Outfit', sans-serif;
+      font-size: 2.1rem;
+      font-weight: 800;
+      color: var(--navy);
+      line-height: 1;
+      letter-spacing: -1.5px;
+    }
+    .fc-unit {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--blue);
+      letter-spacing: 0;
+      margin-left: 1px;
+    }
+    .fc-tag {
+      font-size: 0.64rem;
+      font-weight: 600;
+      color: var(--blue);
+      letter-spacing: 0.5px;
+      opacity: 0.7;
+      margin-top: 4px;
+      text-transform: uppercase;
+    }
+
+    .fc-divider {
+      height: 1px;
+      background: linear-gradient(to right, rgba(43,136,204,0.22), transparent);
+      margin-bottom: 12px;
+    }
+
+    .feature-card h4 {
+      font-size: 0.93rem;
+      font-weight: 700;
+      color: #0a1f4a;
+      margin-bottom: 5px;
+      letter-spacing: 0.3px;
+      line-height: 1.35;
+    }
+    .feature-card p {
+      font-size: 0.79rem;
+      color: #2e3d52;
+      line-height: 1.58;
+      flex: 1;
+    }
+
+    /* ============================================================
+       5. SERVICES SECTION
+    ============================================================ */
+    .services {
+      background: rgba(13,27,62,0.88);
+      padding: 80px 5%;
+    }
+    .services-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .services-header {
+      margin-bottom: 48px;
+    }
+    .services-header .section-label .dot { background: rgba(255,255,255,0.5); }
+    .services-header .section-label .dot:first-child { background: var(--blue); }
+    .services-header .section-label { color: var(--blue); }
+
+    .services-h2 {
+      font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1.2;
+      margin-bottom: 16px;
+    }
+    .services-h2 .accent { color: var(--blue); display: block; }
+
+    .services-body {
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.6);
+      max-width: 640px;
+      line-height: 1.7;
+    }
+
+    .services-list {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0 40px;
+    }
+
+    .service-row {
+      display: flex;
+      align-items: flex-start;
+      padding: 20px 16px;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      border-radius: 4px;
+      transition: background 0.15s;
+      cursor: default;
+    }
+    .service-row:first-child,
+    .service-row:nth-child(6) { border-top: 1px solid rgba(255,255,255,0.1); }
+    .service-row:hover { background: rgba(43,136,204,0.08); }
+    .service-row:hover .service-num,
+    .service-row:hover .service-arrow { color: #5AAFDF; }
+
+    .service-num {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--blue);
+      font-family: 'Outfit', sans-serif;
+      letter-spacing: 1px;
+      width: 40px;
+      flex-shrink: 0;
+      padding-top: 3px;
+      transition: color 0.15s;
+    }
+    .service-info {
+      flex: 1;
+    }
+    .service-name {
+      font-size: 1.25rem;
+      font-weight: 600;
+      font-family: 'Outfit', sans-serif;
+      color: var(--white);
+      margin-bottom: 6px;
+      letter-spacing: -0.2px;
+    }
+    .service-desc {
+      font-size: 0.88rem;
+      font-family: 'Outfit', sans-serif;
+      color: rgba(255,255,255,0.6);
+      line-height: 1.55;
+    }
+    .service-arrow {
+      color: var(--blue);
+      font-size: 1rem;
+      transition: color 0.15s, transform 0.15s;
+      padding-top: 3px;
+      flex-shrink: 0;
+      margin-left: 16px;
+    }
+    .service-row:hover .service-arrow { transform: translateX(4px); }
+
+    /* ============================================================
+       6. ABOUT SECTION
+    ============================================================ */
+    .about {
+      background: rgba(240,246,255,0.55);
+      padding: 80px 0;
+    }
+    .about .container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+
+    /* Stats grid inside about */
+    .about-stats-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-bottom: 0;
+    }
+    .about-stat-card {
+      background: var(--white);
+      border-radius: 12px;
+      padding: 20px 16px;
+      text-align: center;
+      box-shadow: 0 2px 12px rgba(14,43,92,0.07);
+    }
+    .about-stat-num {
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: var(--navy);
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+    .about-stat-num span {
+      color: var(--blue);
+    }
+    .about-stat-label {
+      font-size: 0.75rem;
+      font-weight: 500;
+      color: var(--body-text);
+      line-height: 1.4;
+    }
+
+    .about-content {}
+
+    .about-h2 {
+      font-size: clamp(1.5rem, 2.8vw, 2.1rem);
+      font-weight: 700;
+      color: var(--navy);
+      line-height: 1.25;
+      margin-bottom: 20px;
+    }
+    .about-body {
+      font-size: 0.95rem;
+      color: var(--body-text);
+      line-height: 1.7;
+      margin-bottom: 12px;
+    }
+
+    .about-checklist {
+      margin: 24px 0 32px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .about-check {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.9rem;
+      color: var(--body-text);
+      font-weight: 500;
+    }
+    .about-check::before {
+      content: '✓';
+      width: 20px;
+      height: 20px;
+      background: var(--blue);
+      color: var(--white);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.7rem;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    /* ============================================================
+       7. PARTNER LOGOS STRIP
+    ============================================================ */
+    .partners {
+      background: rgba(240,246,255,0.68);
+      padding: 52px 5%;
+      border-top: 1.5px solid rgba(43,136,204,0.13);
+      border-bottom: 1.5px solid rgba(43,136,204,0.13);
+    }
+    .partners-header {
+      text-align: center;
+      margin-bottom: 32px;
+    }
+    .partners-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 2.5px;
+      color: var(--blue);
+      text-transform: uppercase;
+    }
+    .partners-inner {
+      max-width: 920px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .pb-row {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+    }
+    .pb-row .partner-badge {
+      flex: 1;
+      max-width: 210px;
+    }
+    .partner-badge {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0;
+      background: rgba(255,255,255,0.85);
+      border: 1px solid rgba(43,136,204,0.13);
+      border-radius: 14px;
+      padding: 20px 22px 16px;
+      cursor: default;
+      transition: border-color 0.22s ease, box-shadow 0.22s ease, transform 0.22s ease;
+      min-width: 130px;
+      text-align: center;
+    }
+    .partner-badge:hover {
+      border-color: rgba(43,136,204,0.42);
+      box-shadow: 0 6px 22px rgba(43,136,204,0.11);
+      transform: translateY(-3px);
+    }
+    .pb-logo {
+      height: 34px;
+      max-width: 130px;
+      width: auto;
+      object-fit: contain;
+      margin-bottom: 12px;
+      opacity: 0.72;
+      filter: grayscale(0.15);
+      transition: opacity 0.22s ease, filter 0.22s ease;
+    }
+    .partner-badge:hover .pb-logo {
+      opacity: 1;
+      filter: grayscale(0) saturate(1.05);
+    }
+    .pb-logo-text {
+      height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 12px;
+    }
+    .pb-logo-text svg { height: 28px; width: auto; opacity: 0.55; transition: opacity 0.22s ease; }
+    .partner-badge:hover .pb-logo-text svg { opacity: 1; }
+    .pb-name {
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--navy);
+      white-space: nowrap;
+      line-height: 1.2;
+      margin-bottom: 3px;
+    }
+    .pb-cat {
+      font-size: 0.58rem;
+      font-weight: 600;
+      color: var(--blue);
+      opacity: 0.6;
+      letter-spacing: 0.4px;
+      text-transform: uppercase;
+    }
+
+    /* ============================================================
+       8. WHY CHOOSE US
+    ============================================================ */
+    .why {
+      background: rgba(255,255,255,0.55);
+      padding: 80px 0;
+    }
+    .why .container {
+      display: grid;
+      grid-template-columns: 42% 58%;
+      gap: 48px;
+      align-items: start;
+    }
+
+    .why-content {}
+    .why-h2 {
+      font-size: clamp(1.5rem, 2.8vw, 2.1rem);
+      font-weight: 700;
+      color: var(--navy);
+      line-height: 1.25;
+      margin-bottom: 20px;
+    }
+    .why-body {
+      font-size: 0.9rem;
+      color: var(--body-text);
+      line-height: 1.7;
+      margin-bottom: 32px;
+    }
+    .why .section-label { color: var(--blue); }
+    .why .section-label .dot { background: var(--light-bg); }
+    .why .section-label .dot:first-child { background: var(--blue); }
+
+    /* Why cards grid */
+    .why-cards {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    .why-card {
+      background: rgba(255,255,255,0.55);
+      border-radius: 12px;
+      padding: 22px 20px;
+      border: 1px solid rgba(43,136,204,0.13);
+      box-shadow: 0 2px 14px rgba(14,43,92,0.08);
+      display: flex;
+      flex-direction: row;
+      align-items: flex-start;
+      gap: 16px;
+      transition: box-shadow 0.22s ease, transform 0.22s ease;
+    }
+    .why-card:hover {
+      box-shadow: 0 6px 24px rgba(14,43,92,0.14);
+      transform: translateY(-2px);
+    }
+    .why-card-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, var(--navy) 0%, #7A1020 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .why-card-icon svg {
+      width: 22px;
+      height: 22px;
+      filter: brightness(0) invert(1);
+      opacity: 0.9;
+    }
+    .why-card-text {}
+    .why-card h4 {
+      font-size: 0.87rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 6px;
+      letter-spacing: 0.15px;
+      line-height: 1.25;
+    }
+    .why-card p {
+      font-size: 0.78rem;
+      color: #2e3d52;
+      line-height: 1.6;
+    }
+
+    /* ============================================================
+       9. TESTIMONIALS
+    ============================================================ */
+    .testimonials {
+      background: rgba(240,246,255,0.55);
+      padding: 80px 0;
+    }
+    .testimonials-header {
+      text-align: center;
+      margin-bottom: 48px;
+    }
+    .testimonials-header .section-label {
+      justify-content: center;
+    }
+    .testimonials-h2 {
+      font-size: clamp(1.6rem, 3vw, 2.4rem);
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 12px;
+    }
+    .testimonials-sub {
+      font-size: 0.9rem;
+      color: var(--body-text);
+    }
+
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .testimonial-card {
+      background: var(--white);
+      border: 1px solid rgba(219,227,234,0.8);
+      border-radius: 16px;
+      padding: 28px;
+      transition: box-shadow 0.2s, transform 0.2s;
+    }
+    .testimonial-card:hover {
+      box-shadow: 0 8px 32px rgba(14,43,92,0.10);
+      transform: translateY(-3px);
+    }
+
+    .testimonial-stars {
+      color: var(--blue);
+      font-size: 0.9rem;
+      letter-spacing: 2px;
+      margin-bottom: 14px;
+    }
+    .testimonial-quote {
+      font-size: 0.9rem;
+      color: var(--body-text);
+      font-style: italic;
+      line-height: 1.7;
+      margin-bottom: 20px;
+    }
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .testimonial-avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: var(--light-bg);
+      color: var(--blue);
+      font-size: 0.75rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .testimonial-name {
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--navy);
+    }
+    .testimonial-role {
+      font-size: 0.8rem;
+      color: var(--body-text);
+    }
+
+    /* ============================================================
+       10. FAQ SECTION
+    ============================================================ */
+    .faq {
+      background: rgba(255,255,255,0.55);
+      padding: 80px 0;
+    }
+    .faq-header {
+      text-align: center;
+      margin-bottom: 48px;
+    }
+    .faq-header .section-label {
+      justify-content: center;
+    }
+    .faq-h2 {
+      font-size: clamp(1.6rem, 3vw, 2.4rem);
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 12px;
+    }
+    .faq-sub {
+      font-size: 0.9rem;
+      color: var(--body-text);
+    }
+
+    .faq-list {
+      max-width: 760px;
+      margin: 0 auto;
+    }
+    .faq-item {
+      border-bottom: 1px solid var(--light-bg);
+    }
+    .faq-item:first-child {
+      border-top: 1px solid var(--light-bg);
+    }
+    .faq-question {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      padding: 20px 0;
+      cursor: pointer;
+      font-size: 0.97rem;
+      font-weight: 600;
+      color: var(--navy);
+      user-select: none;
+      transition: color 0.15s;
+    }
+    .faq-question:hover { color: var(--blue); }
+    .faq-icon {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      border: 2px solid var(--light-bg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      color: var(--blue);
+      flex-shrink: 0;
+      transition: transform 0.25s, border-color 0.2s;
+      font-weight: 400;
+      line-height: 1;
+    }
+    .faq-item.open .faq-icon {
+      transform: rotate(45deg);
+      border-color: var(--blue);
+    }
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.35s ease;
+    }
+    .faq-answer-inner {
+      padding: 0 0 20px;
+      font-size: 0.9rem;
+      color: var(--body-text);
+      line-height: 1.75;
+    }
+
+    /* ============================================================
+       11. OFFICES SECTION
+    ============================================================ */
+    .offices {
+      background: rgba(240,246,255,0.55);
+      padding: 80px 0;
+    }
+    .offices-header {
+      text-align: center;
+      margin-bottom: 48px;
+    }
+    .offices-header .section-label {
+      justify-content: center;
+    }
+    .offices-h2 {
+      font-size: clamp(1.6rem, 3vw, 2.4rem);
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 12px;
+    }
+    .offices-sub {
+      font-size: 0.9rem;
+      color: var(--body-text);
+    }
+
+    .offices-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+
+    /* Global markets strip */
+    .global-markets {
+      margin-top: 48px;
+      padding-top: 40px;
+      border-top: 1px solid rgba(43,136,204,0.15);
+    }
+    .global-markets-title {
+      text-align: center;
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: var(--navy);
+      opacity: 0.45;
+      text-transform: uppercase;
+      letter-spacing: 2.5px;
+      margin-bottom: 24px;
+    }
+    .global-markets-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+    .market-country {
+      text-align: center;
+      padding: 22px 16px 20px;
+      background: rgba(255,255,255,0.55);
+      border-radius: 12px;
+      border: 1px solid rgba(43,136,204,0.13);
+    }
+    .market-flag { font-size: 2rem; margin-bottom: 8px; line-height: 1; }
+    .market-name {
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--navy);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 12px;
+    }
+    .market-cities {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 6px 10px;
+    }
+    .market-cities span {
+      font-size: 0.82rem;
+      color: var(--blue);
+      font-weight: 600;
+    }
+    .office-card {
+      background: rgba(255,255,255,0.55);
+      border-radius: 16px;
+      padding: 28px 24px;
+      border: 1px solid rgba(219,227,234,0.8);
+      transition: box-shadow 0.2s, transform 0.2s;
+    }
+    .office-card:hover {
+      box-shadow: 0 8px 28px rgba(14,43,92,0.10);
+      transform: translateY(-3px);
+    }
+    .office-card.primary {
+      border-color: var(--blue);
+      border-width: 2px;
+    }
+    .office-badge {
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--white);
+      background: var(--blue);
+      border-radius: 4px;
+      padding: 3px 8px;
+      margin-bottom: 14px;
+    }
+    .office-city {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--blue);
+      margin-bottom: 10px;
+    }
+    .city-name {
+      color: var(--blue);
+      font-weight: 600;
+    }
+    .office-address {
+      font-size: 0.82rem;
+      color: var(--body-text);
+      line-height: 1.55;
+      margin-bottom: 14px;
+    }
+    .office-contact a {
+      display: block;
+      font-size: 0.82rem;
+      font-weight: 500;
+      color: var(--blue);
+      margin-bottom: 4px;
+      transition: color 0.15s;
+    }
+    .office-contact a:hover { color: var(--navy); }
+
+    /* ============================================================
+       12. CTA BAND / CONTACT FORM
+    ============================================================ */
+    .cta-band {
+      background: var(--navy);
+      padding: 90px 5%;
+    }
+    .cta-band-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 80px;
+      align-items: center;
+    }
+    .cta-text {}
+    .cta-band h2 {
+      font-size: clamp(1.8rem, 3vw, 2.5rem);
+      font-weight: 800;
+      color: var(--white);
+      line-height: 1.2;
+      margin-bottom: 18px;
+    }
+    .cta-band-tagline {
+      font-size: 0.92rem;
+      color: rgba(255,255,255,0.65);
+      line-height: 1.75;
+      margin-bottom: 36px;
+    }
+    .cta-direct {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .cta-direct a {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 0.88rem;
+      font-weight: 500;
+      color: rgba(255,255,255,0.72);
+      transition: color 0.15s, background 0.15s, border-color 0.15s;
+      padding: 11px 16px;
+      background: rgba(255,255,255,0.07);
+      border-radius: 8px;
+      border: 1px solid rgba(255,255,255,0.1);
+      text-decoration: none;
+    }
+    .cta-direct a:hover {
+      color: var(--white);
+      background: rgba(43,136,204,0.22);
+      border-color: rgba(43,136,204,0.4);
+    }
+
+    /* Contact form */
+    .contact-form {
+      background: #fff;
+      border-radius: 16px;
+      padding: 38px;
+      box-shadow: 0 24px 64px rgba(0,0,0,0.28);
+    }
+    .contact-form h3 {
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: var(--navy);
+      margin-bottom: 24px;
+    }
+    .form-row {
+      margin-bottom: 14px;
+    }
+    .form-row label {
+      display: block;
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: #5a6e84;
+      margin-bottom: 6px;
+      text-transform: uppercase;
+      letter-spacing: 0.7px;
+    }
+    .form-row input,
+    .form-row select,
+    .form-row textarea {
+      width: 100%;
+      background: #f4f7fb;
+      border: 1.5px solid #dce5ef;
+      border-radius: 8px;
+      padding: 11px 14px;
+      font-family: 'Inter Tight', sans-serif;
+      font-size: 0.88rem;
+      color: var(--navy);
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
+      box-sizing: border-box;
+    }
+    .form-row input::placeholder,
+    .form-row textarea::placeholder { color: #a0b2c4; }
+    .form-row input:focus,
+    .form-row select:focus,
+    .form-row textarea:focus {
+      border-color: var(--blue);
+      box-shadow: 0 0 0 3px rgba(43,136,204,0.14);
+      background: #fff;
+    }
+    .form-row textarea { resize: vertical; min-height: 90px; }
+    .form-row select { appearance: none; cursor: pointer; }
+    .form-submit {
+      width: 100%;
+      background: var(--blue);
+      color: var(--white);
+      font-family: 'Inter Tight', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      padding: 14px 24px;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.15s;
+      margin-top: 8px;
+    }
+    .form-submit:hover { background: #1a77bb; transform: translateY(-1px); }
+
+    /* ============================================================
+       13. FOOTER
+    ============================================================ */
+    .footer {
+      background: var(--navy);
+      padding: 64px 0 0;
+      border-top: 3px solid var(--blue);
+    }
+    .footer .container {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr 1fr 1.3fr;
+      gap: 48px;
+      padding-bottom: 48px;
+    }
+
+    .footer-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+    .footer-tagline {
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.55);
+      line-height: 1.65;
+      margin-bottom: 20px;
+    }
+
+    /* Social icons */
+    .footer-social {
+      display: flex;
+      gap: 10px;
+      margin-top: 4px;
+    }
+    .footer-social a {
+      width: 36px;
+      height: 36px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.09);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.15s, border-color 0.15s;
+      text-decoration: none;
+    }
+    .footer-social a i {
+      font-size: 14px;
+      color: rgba(255,255,255,0.55);
+      transition: color 0.15s;
+    }
+    .footer-social a:hover { background: var(--blue); border-color: var(--blue); }
+    .footer-social a:hover i { color: var(--white); }
+
+    .footer-col h5 {
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--blue);
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      margin-bottom: 18px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid rgba(43,136,204,0.25);
+    }
+    .footer-col ul {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .footer-col ul li a {
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.55);
+      transition: color 0.15s;
+    }
+    .footer-col ul li a:hover { color: var(--white); }
+
+    .footer-contact-item {
+      display: flex;
+      gap: 10px;
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.55);
+      margin-bottom: 10px;
+      line-height: 1.5;
+    }
+    .footer-contact-item .icon { flex-shrink: 0; opacity: 0.7; width: 16px; text-align: center; }
+    .footer-contact-item a {
+      color: rgba(255,255,255,0.55);
+      transition: color 0.15s;
+    }
+    .footer-contact-item a:hover { color: var(--white); }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.07);
+      padding: 20px 5%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.82rem;
+      color: rgba(255,255,255,0.32);
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    /* ============================================================
+       BACK TO TOP BUTTON
+    ============================================================ */
+    .back-to-top {
+      position: fixed;
+      bottom: 28px;
+      right: 28px;
+      width: 44px;
+      height: 44px;
+      background: var(--blue);
+      color: var(--white);
+      border-radius: 50%;
+      border: none;
+      font-size: 1.1rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 16px rgba(43,136,204,0.35);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.25s, transform 0.2s;
+      z-index: 200;
+    }
+    .back-to-top.visible {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    .back-to-top:hover { transform: translateY(-3px); }
+
+    /* ============================================================
+       RESPONSIVE
+    ============================================================ */
+    @media (max-width: 1024px) {
+      .features .container { grid-template-columns: repeat(2, 1fr); }
+      .testimonials-grid { grid-template-columns: repeat(2, 1fr); }
+      .offices-grid { grid-template-columns: repeat(2, 1fr); }
+      .cta-band-inner { grid-template-columns: 1fr; gap: 40px; }
+    }
+
+    @media (max-width: 768px) {
+      .utility-bar .hide-mobile { display: none; }
+      .nav-links, .nav-cta { display: none; }
+      .nav-hamburger { display: flex; }
+
+      .hero .container {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+      .hero-body { max-width: 100%; }
+      .hero-cta { justify-content: center; }
+      .hero-globe { max-width: 320px; }
+      .hero-stats { justify-content: center; }
+
+      .features .container { grid-template-columns: 1fr; }
+      .services-list { grid-template-columns: 1fr; }
+      .service-row:nth-child(6) { border-top: none; }
+
+      .about .container,
+      .why .container {
+        grid-template-columns: 1fr;
+      }
+      .about-stats-grid { grid-template-columns: repeat(3, 1fr); }
+      .why-cards { grid-template-columns: repeat(2, 1fr); }
+
+      .testimonials-grid { grid-template-columns: 1fr; }
+      .offices-grid { grid-template-columns: 1fr 1fr; }
+
+      .footer .container { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 480px) {
+      .footer .container { grid-template-columns: 1fr; }
+      .hero-h1 { letter-spacing: -0.5px; }
+      .partners-inner { gap: 10px; }
+      .pb-row { flex-wrap: wrap; }
+      .pb-row .partner-badge { max-width: 160px; }
+      .about-stats-grid { grid-template-columns: repeat(2, 1fr); }
+      .offices-grid { grid-template-columns: 1fr; }
+      .why-cards { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ============================================================
+       1. TOP UTILITY BAR
+  ============================================================ -->
+  <div class="utility-bar">
+    <div class="container">
+      <span>Quick Support: <a href="tel:+61470406030">0470 406 030</a></span>
+      <a href="#contact" class="hide-mobile">Get a Free Consultation &rarr;</a>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       2. NAVIGATION
+  ============================================================ -->
+  <nav class="nav" id="main-nav">
+    <div class="container">
+      <a href="#hero" class="nav-logo">
+        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="150" height="38" viewBox="0 0 187.5 48" style="display:block;">
+          <defs>
+            <style>.a{fill:none;}.a,.b,.e{fill-rule:evenodd;}.b,.f{fill:#063459;}.c{clip-path:url(#a);}.d{clip-path:url(#b);}.e{fill:url(#c);}.f{font-size:6px;font-family:Nunito-Regular, Nunito;}</style>
+            <clipPath id="a"><path d="M0,0H42.727V40.516H0Z"></path></clipPath>
+            <clipPath id="b"><path d="M22.82,23.119V5.037a1.061,1.061,0,0,1,1.352-1.02L41.949,8.982A1.062,1.062,0,0,1,42.727,10V28.084a1.062,1.062,0,0,1-1.352,1.02L23.6,24.138a1.054,1.054,0,0,1-.777-1.02ZM9.4,11.373l9.152,2.559a1.065,1.065,0,0,0,1.352-1.019v-9.3a1.061,1.061,0,0,0-.777-1.02L9.977.041A1.061,1.061,0,0,0,8.625,1.06v9.293A1.054,1.054,0,0,0,9.4,11.373Zm9.727,4.707L1.352,11.115A1.062,1.062,0,0,0,0,12.134V30.216a1.062,1.062,0,0,0,.777,1.02L18.555,36.2a1.061,1.061,0,0,0,1.352-1.02V17.1a1.057,1.057,0,0,0-.777-1.02Zm14.2,12.766-9.152-2.559a1.065,1.065,0,0,0-1.352,1.019v9.3a1.057,1.057,0,0,0,.777,1.02l9.152,2.555A1.061,1.061,0,0,0,34.1,39.158V29.865a1.054,1.054,0,0,0-.777-1.02Z"></path></clipPath>
+            <linearGradient id="c" x1="1.095" y1="0.244" x2="-0.095" y2="0.757" gradientUnits="objectBoundingBox">
+              <stop offset="0" stop-color="#1283dd"></stop><stop offset="0.5" stop-color="#399ce7"></stop><stop offset="1" stop-color="#5ab0ef"></stop>
+            </linearGradient>
+          </defs>
+          <path class="a" d="M0,0H187.5V48H0Z"></path>
+          <g transform="translate(50.787 14.242)"><path class="b" d="M0,14.656H5.793a4.353,4.353,0,0,0,4.32-4.4A3.544,3.544,0,0,0,8.6,7.328,3.579,3.579,0,0,0,9.949,4.441,4.02,4.02,0,0,0,5.793,0H0ZM2.949,2.926h2.6A1.356,1.356,0,0,1,6.9,4.4,1.368,1.368,0,0,1,5.551,5.875h-2.6Zm0,5.875h2.6a1.44,1.44,0,0,1,1.473,1.453,1.457,1.457,0,0,1-1.473,1.477h-2.6Z"></path></g>
+          <g transform="translate(63.5 14.262)"><path class="b" d="M2.93,14.637V0H0V14.637Z"></path></g>
+          <g transform="translate(68.497 14.281)"><path class="b" d="M6.57,14.617V2.906h3.644V0H0V2.906H3.645V14.617Z"></path></g>
+          <g transform="translate(86.059 14.145)"><path class="b" d="M0,13.813a9.148,9.148,0,0,0,4.629,1.063,4.339,4.339,0,0,0,4.422-4.441c0-2.332-1.965-3.645-4.238-4.484-.84-.285-1.555-.652-1.637-1.473A1.445,1.445,0,0,1,4.629,2.84a6.64,6.64,0,0,1,2.988.613L7.984.629A8.6,8.6,0,0,0,4.34.016,4.287,4.287,0,0,0,.207,4.477c0,2.457,2.047,3.625,4.34,4.465.816.285,1.453.652,1.516,1.492A1.478,1.478,0,0,1,4.547,11.91,6.587,6.587,0,0,1,.371,10.742Z"></path></g>
+          <g transform="translate(97.054 14.016)"><path class="b" d="M7.553,15.086C17.627,15.086,17.627,0,7.553,0s-10.07,15.086,0,15.086Zm0-3.027c-5.855,0-5.855-9.051,0-9.051s5.855,9.051,0,9.051Z"></path></g>
+          <g transform="translate(114.903 14.262)"><path class="b" d="M0,0V14.637H7.574V11.711H2.93V0Z"></path></g>
+          <g transform="translate(124.913 14.262)"><path class="b" d="M10.586,9.539V0H7.68V9.52c0,3.07-4.75,3.07-4.75,0V0H0V9.539c0,6.961,10.586,6.961,10.586,0Z"></path></g>
+          <g transform="translate(137.505 14.281)"><path class="b" d="M6.57,14.617V2.906h3.644V0H0V2.906H3.645V14.617Z"></path></g>
+          <g transform="translate(149.929 14.262)"><path class="b" d="M2.93,14.637V0H0V14.637Z"></path></g>
+          <g transform="translate(155.642 14.016)"><path class="b" d="M7.553,15.086C17.627,15.086,17.627,0,7.553,0s-10.07,15.086,0,15.086Zm0-3.027c-5.855,0-5.855-9.051,0-9.051s5.855,9.051,0,9.051Z"></path></g>
+          <g transform="translate(173.491 13.953)"><path class="b" d="M2.93,6.98l7.41,8.273h.777V.328H8.168V8.6L.777,0H0V14.945H2.93Z"></path></g>
+          <g transform="translate(3.027 3.379)">
+            <path class="a" d="M0,0H42.727V40.516H0Z"></path>
+            <g class="c"><g transform="translate(0 0.155)">
+              <path class="a" d="M22.82,23.119V5.037a1.061,1.061,0,0,1,1.352-1.02L41.949,8.982A1.062,1.062,0,0,1,42.727,10V28.084a1.062,1.062,0,0,1-1.352,1.02L23.6,24.138a1.054,1.054,0,0,1-.777-1.02ZM9.4,11.373l9.152,2.559a1.065,1.065,0,0,0,1.352-1.019v-9.3a1.061,1.061,0,0,0-.777-1.02L9.977.041A1.061,1.061,0,0,0,8.625,1.06v9.293A1.054,1.054,0,0,0,9.4,11.373Zm9.727,4.707L1.352,11.115A1.062,1.062,0,0,0,0,12.134V30.216a1.062,1.062,0,0,0,.777,1.02L18.555,36.2a1.061,1.061,0,0,0,1.352-1.02V17.1a1.057,1.057,0,0,0-.777-1.02Zm14.2,12.766-9.152-2.559a1.065,1.065,0,0,0-1.352,1.019v9.3a1.057,1.057,0,0,0,.777,1.02l9.152,2.555A1.061,1.061,0,0,0,34.1,39.158V29.865a1.054,1.054,0,0,0-.777-1.02Z"></path>
+              <g class="d"><g transform="translate(0 -0.151)"><path class="e" d="M42.727,0H0V40.512H42.727Z"></path></g></g>
+            </g></g>
+          </g>
+          <text class="f" transform="translate(48 38)"><tspan x="0" y="0" xml:space="preserve"> DELIVERING YOUR TECHNOLOGY SOLUTIONS</tspan></text>
+        </svg>
+      </a>
+
+      <div class="nav-links">
+        <a href="#hero" data-section="hero">Home</a>
+        <a href="#about" data-section="about">About Us</a>
+
+        <div class="nav-dropdown-wrap">
+          <a href="#services" data-section="services">
+            Our Services <span class="chevron">&#9660;</span>
+          </a>
+          <div class="nav-dropdown">
+            <a href="#services">Managed IT Services</a>
+            <a href="#services">Office Network Installation</a>
+            <a href="#services">Cloud Services</a>
+            <a href="#services">Cyber Security</a>
+            <a href="#services">Business VOIP Phone</a>
+            <a href="#services">Procurement Services</a>
+            <a href="#services">Digital Marketing</a>
+            <a href="#services">Security Camera Installation</a>
+            <a href="#services">IT Consulting</a>
+            <a href="#services">24/7 IT Support</a>
+          </div>
+        </div>
+
+        <a href="#why" data-section="why">Solutions</a>
+        <a href="#faq" data-section="faq">Support</a>
+        <a href="#contact" data-section="contact">Contact</a>
+      </div>
+
+      <a href="#contact" class="btn-primary nav-cta">Get a Quote &rarr;</a>
+      <button class="nav-hamburger" id="hamburger" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+
+    <div class="nav-mobile" id="nav-mobile">
+      <a href="#hero">Home</a>
+      <a href="#about">About Us</a>
+      <span class="mobile-services-label">Our Services</span>
+      <a href="#services" class="mobile-service-link">Managed IT Services</a>
+      <a href="#services" class="mobile-service-link">Office Network Installation</a>
+      <a href="#services" class="mobile-service-link">Cloud Services</a>
+      <a href="#services" class="mobile-service-link">Cyber Security</a>
+      <a href="#services" class="mobile-service-link">Business VOIP Phone</a>
+      <a href="#services" class="mobile-service-link">Procurement Services</a>
+      <a href="#services" class="mobile-service-link">Digital Marketing</a>
+      <a href="#services" class="mobile-service-link">Security Camera Installation</a>
+      <a href="#services" class="mobile-service-link">IT Consulting</a>
+      <a href="#services" class="mobile-service-link">24/7 IT Support</a>
+      <a href="#why">Solutions</a>
+      <a href="#faq">Support / FAQ</a>
+      <a href="#contact">Contact</a>
+      <a href="#contact" class="btn-primary">Get a Quote &rarr;</a>
+    </div>
+  </nav>
+
+  <!-- ============================================================
+       3. HERO
+  ============================================================ -->
+  <section class="hero" id="hero">
+    <div class="container">
+
+      <!-- Left: Text -->
+      <div class="hero-content">
+        <p class="hero-eyebrow reveal">Secure. Scalable. Smart.</p>
+        <h1 class="hero-h1 reveal reveal-delay-1">
+          IT Solutions For Every Business
+          <span class="accent">In Australia</span>
+        </h1>
+        <p class="hero-body reveal reveal-delay-2">
+          BIT Solution is a trusted, Australian-owned IT services company delivering managed IT, cyber security, cloud solutions, and 24/7 support — fueling the long-term success of businesses in <span class="city-name">Sydney</span>, <span class="city-name">Melbourne</span>, <span class="city-name">Brisbane</span>, and <span class="city-name">Adelaide</span>.
+        </p>
+        <div class="hero-cta reveal reveal-delay-3">
+          <a href="#contact" class="btn-primary">GET STARTED &rarr;</a>
+          <a href="#about" class="btn-outline">LEARN MORE</a>
+        </div>
+
+        <div class="hero-stats reveal reveal-delay-4">
+          <div class="hero-stat-item">
+            <div class="hero-stat-num">150+</div>
+            <div class="hero-stat-label">Projects Delivered</div>
+          </div>
+          <div class="hero-stat-item">
+            <div class="hero-stat-num">90+</div>
+            <div class="hero-stat-label">Satisfied Clients</div>
+          </div>
+          <div class="hero-stat-item">
+            <div class="hero-stat-num">99.9%</div>
+            <div class="hero-stat-label">Uptime Reliability</div>
+          </div>
+          <div class="hero-stat-item">
+            <div class="hero-stat-num">4.8&#9733;</div>
+            <div class="hero-stat-label">Average Rating</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: Network Globe -->
+      <div class="hero-globe reveal reveal-delay-2">
+        <div class="globe-tooltip" id="globe-tooltip"></div>
+        <svg class="globe-svg" viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="200" cy="200" r="175" stroke="#2B88CC" stroke-opacity="0.18" stroke-width="1.5"/>
+          <circle cx="200" cy="200" r="135" stroke="#2B88CC" stroke-opacity="0.10" stroke-width="1"/>
+          <circle cx="200" cy="200" r="90" stroke="#2B88CC" stroke-opacity="0.07" stroke-width="1"/>
+          <ellipse cx="200" cy="200" rx="175" ry="55" stroke="#2B88CC" stroke-opacity="0.10" stroke-width="1"/>
+          <ellipse cx="200" cy="200" rx="175" ry="110" stroke="#2B88CC" stroke-opacity="0.08" stroke-width="1"/>
+          <ellipse cx="200" cy="200" rx="55" ry="175" stroke="#2B88CC" stroke-opacity="0.10" stroke-width="1"/>
+          <ellipse cx="200" cy="200" rx="110" ry="175" stroke="#2B88CC" stroke-opacity="0.08" stroke-width="1"/>
+          <line class="globe-line" data-nodes="0,1" x1="200" y1="26"  x2="341" y2="84"  stroke="#2B88CC" stroke-opacity="0.30" stroke-width="1.2"/>
+          <line class="globe-line" data-nodes="1,2" x1="341" y1="84"  x2="369" y2="220" stroke="#2B88CC" stroke-opacity="0.30" stroke-width="1.2"/>
+          <line class="globe-line" data-nodes="2,3" x1="369" y1="220" x2="296" y2="368" stroke="#2B88CC" stroke-opacity="0.30" stroke-width="1.2"/>
+          <line class="globe-line" data-nodes="3,4" x1="296" y1="368" x2="104" y2="368" stroke="#2B88CC" stroke-opacity="0.30" stroke-width="1.2"/>
+          <line class="globe-line" data-nodes="4,5" x1="104" y1="368" x2="31"  y2="220" stroke="#2B88CC" stroke-opacity="0.30" stroke-width="1.2"/>
+          <line class="globe-line" data-nodes="5,6" x1="31"  y1="220" x2="59"  y2="84"  stroke="#2B88CC" stroke-opacity="0.30" stroke-width="1.2"/>
+          <line class="globe-line" data-nodes="6,0" x1="59"  y1="84"  x2="200" y2="26"  stroke="#2B88CC" stroke-opacity="0.30" stroke-width="1.2"/>
+          <line class="globe-line" data-nodes="0,7" x1="200" y1="26"  x2="200" y2="200" stroke="#2B88CC" stroke-opacity="0.18" stroke-width="1"/>
+          <line class="globe-line" data-nodes="1,7" x1="341" y1="84"  x2="200" y2="200" stroke="#2B88CC" stroke-opacity="0.18" stroke-width="1"/>
+          <line class="globe-line" data-nodes="2,7" x1="369" y1="220" x2="200" y2="200" stroke="#2B88CC" stroke-opacity="0.18" stroke-width="1"/>
+          <line class="globe-line" data-nodes="3,7" x1="296" y1="368" x2="200" y2="200" stroke="#2B88CC" stroke-opacity="0.18" stroke-width="1"/>
+          <line class="globe-line" data-nodes="4,7" x1="104" y1="368" x2="200" y2="200" stroke="#2B88CC" stroke-opacity="0.18" stroke-width="1"/>
+          <line class="globe-line" data-nodes="5,7" x1="31"  y1="220" x2="200" y2="200" stroke="#2B88CC" stroke-opacity="0.18" stroke-width="1"/>
+          <line class="globe-line" data-nodes="6,7" x1="59"  y1="84"  x2="200" y2="200" stroke="#2B88CC" stroke-opacity="0.18" stroke-width="1"/>
+        </svg>
+        <div class="globe-node" data-i="0">AU</div>
+        <div class="globe-node" data-i="1">SY</div>
+        <div class="globe-node" data-i="2">ME</div>
+        <div class="globe-node" data-i="3">PE</div>
+        <div class="globe-node" data-i="4">BR</div>
+        <div class="globe-node" data-i="5">VPN</div>
+        <div class="globe-node" data-i="6">AD</div>
+        <div class="globe-node" data-i="7">HQ</div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============================================================
+       4. FEATURE CARDS STRIP
+  ============================================================ -->
+  <section class="features">
+    <div class="container">
+
+      <!-- Card 1: Security -->
+      <div class="feature-card reveal">
+        <div class="fc-top">
+          <div class="fc-icon">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 2 L20 5.5 L20 12 C20 16.5 16.5 20.5 12 22 C7.5 20.5 4 16.5 4 12 L4 5.5 Z" fill="rgba(43,136,204,0.15)" stroke="#2B88CC" stroke-width="1.4" stroke-linejoin="round"/>
+              <path d="M8.5 12 L11 14.5 L15.5 9.5" stroke="#2B88CC" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <div class="fc-metric">
+            <div class="fc-num">3,245<span class="fc-unit">+</span></div>
+            <div class="fc-tag">attacks blocked</div>
+          </div>
+        </div>
+        <div class="fc-divider"></div>
+        <h4>Enterprise-Grade Security</h4>
+        <p>End-to-end threat protection, SOC monitoring, and zero-day defence — all active 24/7.</p>
+      </div>
+
+      <!-- Card 2: Response -->
+      <div class="feature-card reveal reveal-delay-1">
+        <div class="fc-top">
+          <div class="fc-icon">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="12" cy="12" r="8.5" stroke="#2B88CC" stroke-width="1.4"/>
+              <path d="M12 7 L12 12 L15.5 14" stroke="#2B88CC" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M4.5 4.5 L6 6" stroke="#2B88CC" stroke-width="1.4" stroke-linecap="round"/>
+              <path d="M19.5 4.5 L18 6" stroke="#2B88CC" stroke-width="1.4" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <div class="fc-metric">
+            <div class="fc-num">&lt;5<span class="fc-unit">min</span></div>
+            <div class="fc-tag">response guarantee</div>
+          </div>
+        </div>
+        <div class="fc-divider"></div>
+        <h4>Response in Minutes</h4>
+        <p>SLA-backed rapid response. Your business never waits — we're resolving it before you feel it.</p>
+      </div>
+
+      <!-- Card 3: Offices -->
+      <div class="feature-card reveal reveal-delay-2">
+        <div class="fc-top">
+          <div class="fc-icon">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 2 C8.7 2 6 4.9 6 8.5 C6 13.5 12 22 12 22 C12 22 18 13.5 18 8.5 C18 4.9 15.3 2 12 2 Z" fill="rgba(43,136,204,0.15)" stroke="#2B88CC" stroke-width="1.4"/>
+              <circle cx="12" cy="8.5" r="2.2" fill="#2B88CC"/>
+            </svg>
+          </div>
+          <div class="fc-metric">
+            <div class="fc-num">4<span class="fc-unit"> loc</span></div>
+            <div class="fc-tag">across Australia</div>
+          </div>
+        </div>
+        <div class="fc-divider"></div>
+        <h4>4 Australian Offices</h4>
+        <p>Local teams in Sydney, Melbourne, Brisbane, and Perth. On-site the same day you call.</p>
+      </div>
+
+      <!-- Card 4: Scale -->
+      <div class="feature-card reveal reveal-delay-3">
+        <div class="fc-top">
+          <div class="fc-icon">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="2.5" y="15" width="4.5" height="7" rx="1" fill="rgba(43,136,204,0.2)" stroke="#2B88CC" stroke-width="1.2"/>
+              <rect x="9.5" y="10" width="4.5" height="12" rx="1" fill="rgba(43,136,204,0.4)" stroke="#2B88CC" stroke-width="1.2"/>
+              <rect x="16.5" y="4.5" width="4.5" height="17.5" rx="1" fill="#2B88CC" stroke="#2B88CC" stroke-width="1.2"/>
+              <path d="M4.5 12 L11.5 7.5 L18.5 2.5" stroke="#2B88CC" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M15.5 2.5 L18.5 2.5 L18.5 5.5" stroke="#2B88CC" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <div class="fc-metric">
+            <div class="fc-num">500<span class="fc-unit">+</span></div>
+            <div class="fc-tag">clients served</div>
+          </div>
+        </div>
+        <div class="fc-divider"></div>
+        <h4>Scales With You</h4>
+        <p>From 5-person startups to 500-employee enterprises — solutions that grow as you grow.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============================================================
+       5. SERVICES SECTION
+  ============================================================ -->
+  <section class="services" id="services">
+    <div class="services-inner">
+
+      <div class="services-header reveal">
+        <div class="section-label">
+          <div class="dots"><div class="dot"></div><div class="dot"></div></div>
+          OUR SERVICES
+        </div>
+        <h2 class="services-h2">
+          Trusted IT Solutions for
+          <span class="accent">Australian Businesses</span>
+        </h2>
+        <p class="services-body">
+          From managed IT to cyber security and cloud solutions, BIT Solution delivers comprehensive technology services that keep your business running at peak performance — 24 hours a day, 7 days a week.
+        </p>
+      </div>
+
+      <div class="services-list reveal reveal-delay-1">
+        <div class="service-row">
+          <span class="service-num">01.</span>
+          <div class="service-info">
+            <div class="service-name">Managed IT Services</div>
+            <div class="service-desc">24/7 monitoring, service desk, and proactive maintenance keeping your systems secure, stable, and running smoothly.</div>
+          </div>
+          <span class="service-arrow">&#8594;</span>
+        </div>
+        <div class="service-row">
+          <span class="service-num">02.</span>
+          <div class="service-info">
+            <div class="service-name">Office Network Installation</div>
+            <div class="service-desc">Structured cabling, server setup, and full connectivity solutions for offices of any size.</div>
+          </div>
+          <span class="service-arrow">&#8594;</span>
+        </div>
+        <div class="service-row">
+          <span class="service-num">03.</span>
+          <div class="service-info">
+            <div class="service-name">Cloud Services</div>
+            <div class="service-desc">Cloud migration, multi-cloud management, and secure remote workforce access with continuous optimization.</div>
+          </div>
+          <span class="service-arrow">&#8594;</span>
+        </div>
+        <div class="service-row">
+          <span class="service-num">04.</span>
+          <div class="service-info">
+            <div class="service-name">Cyber Security Services</div>
+            <div class="service-desc">End-to-end protection: firewall, endpoint security, intrusion detection, threat monitoring, and employee training.</div>
+          </div>
+          <span class="service-arrow">&#8594;</span>
+        </div>
+        <div class="service-row">
+          <span class="service-num">05.</span>
+          <div class="service-info">
+            <div class="service-name">Business VOIP Phone Services</div>
+            <div class="service-desc">Crystal-clear, cost-effective VoIP systems. ACMA-regulated, Australian infrastructure.</div>
+          </div>
+          <span class="service-arrow">&#8594;</span>
+        </div>
+        <div class="service-row">
+          <span class="service-num">06.</span>
+          <div class="service-info">
+            <div class="service-name">Procurement Services</div>
+            <div class="service-desc">Hardware and software sourcing with expert guidance and customized solutions.</div>
+          </div>
+          <span class="service-arrow">&#8594;</span>
+        </div>
+        <div class="service-row">
+          <span class="service-num">07.</span>
+          <div class="service-info">
+            <div class="service-name">Digital Marketing Services</div>
+            <div class="service-desc">SEO, Google Ads, social media management, and analytics to grow your digital presence.</div>
+          </div>
+          <span class="service-arrow">&#8594;</span>
+        </div>
+        <div class="service-row">
+          <span class="service-num">08.</span>
+          <div class="service-info">
+            <div class="service-name">Security Camera Installation</div>
+            <div class="service-desc">IP cameras, NVR setup, remote monitoring, and commercial CCTV for any premises.</div>
+          </div>
+          <span class="service-arrow">&#8594;</span>
+        </div>
+        <div class="service-row">
+          <span class="service-num">09.</span>
+          <div class="service-info">
+            <div class="service-name">IT Consulting</div>
+            <div class="service-desc">Strategic technology guidance aligned to your business goals. Your virtual CTO.</div>
+          </div>
+          <span class="service-arrow">&#8594;</span>
+        </div>
+        <div class="service-row">
+          <span class="service-num">10.</span>
+          <div class="service-info">
+            <div class="service-name">24/7 IT Support</div>
+            <div class="service-desc">Around-the-clock help desk with guaranteed response times and enterprise ticketing.</div>
+          </div>
+          <span class="service-arrow">&#8594;</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============================================================
+       6. ABOUT SECTION
+  ============================================================ -->
+  <section class="about" id="about">
+    <div class="container">
+
+      <!-- Left: Stats grid -->
+      <div class="reveal">
+        <div class="about-stats-grid">
+          <div class="about-stat-card">
+            <div class="about-stat-num">150<span>+</span></div>
+            <div class="about-stat-label">Projects Delivered</div>
+          </div>
+          <div class="about-stat-card">
+            <div class="about-stat-num">25</div>
+            <div class="about-stat-label">Certified Engineers</div>
+          </div>
+          <div class="about-stat-card">
+            <div class="about-stat-num">90<span>+</span></div>
+            <div class="about-stat-label">Satisfied Clients</div>
+          </div>
+          <div class="about-stat-card">
+            <div class="about-stat-num">4.8<span>&#9733;</span></div>
+            <div class="about-stat-label">Average Rating</div>
+          </div>
+          <div class="about-stat-card">
+            <div class="about-stat-num">99.9<span>%</span></div>
+            <div class="about-stat-label">Uptime Reliability</div>
+          </div>
+          <div class="about-stat-card">
+            <div class="about-stat-num">3,245</div>
+            <div class="about-stat-label">Cyber Attacks Blocked</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: Content -->
+      <div class="about-content reveal reveal-delay-1">
+        <div class="section-label">
+          <div class="dots"><div class="dot"></div><div class="dot"></div></div>
+          ABOUT US
+        </div>
+        <h2 class="about-h2">Powering Australian Businesses with Smart, Secure IT</h2>
+        <p class="about-body">
+          Founded over 5 years ago, BIT Solution is a Canadian-owned IT services company built on a single mission: to deliver smart, secure, and scalable technology solutions that fuel the long-term success of every business we serve.
+        </p>
+        <p class="about-body">
+          Our team of 25 certified professionals brings deep expertise in networking, cloud infrastructure, cyber security, and digital transformation — serving clients from Sydney HQ to Melbourne, Brisbane, and Perth.
+        </p>
+        <ul class="about-checklist">
+          <li class="about-check">Microsoft Cloud Solution Provider &amp; Fortinet partner</li>
+          <li class="about-check">ACMA-regulated VOIP with Australian infrastructure</li>
+          <li class="about-check">Serving businesses from 5 to 500 employees</li>
+          <li class="about-check">Transparent pricing — no hidden fees, no lock-in</li>
+          <li class="about-check">Vision: your most trusted technology partner in Australia</li>
+        </ul>
+        <a href="#contact" class="btn-outline-blue">TALK TO US &rarr;</a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============================================================
+       7. PARTNER LOGOS STRIP
+  ============================================================ -->
+  <div class="partners">
+    <div class="partners-header">
+      <div class="partners-label">
+        <div class="dots"><div class="dot"></div><div class="dot"></div></div>
+        Certified Partners &amp; Accreditations
+      </div>
+    </div>
+    <div class="partners-inner">
+
+      <!-- Row 1: 4 badges -->
+      <div class="pb-row">
+
+        <div class="partner-badge">
+          <img src="logos/microsoft.png" class="pb-logo" alt="Microsoft" />
+          <div class="pb-name">Microsoft CSP</div>
+          <div class="pb-cat">Cloud Partner</div>
+        </div>
+
+        <div class="partner-badge">
+          <img src="logos/dell.svg" class="pb-logo" alt="Dell" />
+          <div class="pb-name">Dell Partner</div>
+          <div class="pb-cat">Hardware</div>
+        </div>
+
+        <div class="partner-badge">
+          <img src="logos/google.svg" class="pb-logo" alt="Google Workspace" />
+          <div class="pb-name">Google Workspace</div>
+          <div class="pb-cat">Productivity</div>
+        </div>
+
+        <div class="partner-badge">
+          <img src="logos/fortinet.svg" class="pb-logo" alt="Fortinet" style="height:26px;" />
+          <div class="pb-name">Fortinet</div>
+          <div class="pb-cat">Cyber Security</div>
+        </div>
+
+      </div>
+
+      <!-- Row 2: 3 badges -->
+      <div class="pb-row">
+
+        <div class="partner-badge">
+          <div class="pb-logo-text">
+            <svg viewBox="0 0 110 34" fill="none" xmlns="http://www.w3.org/2000/svg" style="height:34px;width:auto;">
+              <rect x="0" y="0" width="6" height="34" rx="2" fill="#00843D"/>
+              <rect x="7" y="0" width="6" height="34" rx="0" fill="#FFD700"/>
+              <text x="20" y="14" font-family="Inter Tight, sans-serif" font-size="11" font-weight="800" fill="#0E2B5C" letter-spacing="1.5">ACMA</text>
+              <text x="20" y="27" font-family="Inter Tight, sans-serif" font-size="7.5" font-weight="500" fill="#4B5863" letter-spacing="0.3">Australian Govt</text>
+            </svg>
+          </div>
+          <div class="pb-name">ACMA Regulated</div>
+          <div class="pb-cat">Gov't Compliance</div>
+        </div>
+
+        <div class="partner-badge">
+          <img src="logos/lexmark.svg" class="pb-logo" alt="Lexmark" />
+          <div class="pb-name">Lexmark</div>
+          <div class="pb-cat">Print &amp; Devices</div>
+        </div>
+
+        <div class="partner-badge">
+          <div class="pb-logo-text">
+            <svg viewBox="0 0 36 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M26 20 C29 20 31 18 31 15.5 C31 13 29 11.5 27 11.3 C26.5 8.5 24.2 6.5 21.5 6.5 C18.5 6.5 16 9 16 12 C14 12.3 12.5 13.8 12.5 15.8 C12.5 18 14.2 20 16.5 20 Z" fill="rgba(43,136,204,0.22)" stroke="#2B88CC" stroke-width="1.8"/>
+              <line x1="22" y1="20" x2="22" y2="24" stroke="#2B88CC" stroke-width="1.6" stroke-linecap="round"/>
+              <line x1="19" y1="24" x2="25" y2="24" stroke="#2B88CC" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <div class="pb-name">Private Cloud</div>
+          <div class="pb-cat">Infrastructure</div>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ============================================================
+       8. WHY CHOOSE US
+  ============================================================ -->
+  <section class="why" id="why">
+    <div class="container">
+
+      <div class="why-content reveal">
+        <div class="section-label">
+          <div class="dots"><div class="dot"></div><div class="dot"></div></div>
+          WHY CHOOSE US
+        </div>
+        <h2 class="why-h2">We do things differently at BIT Solution</h2>
+        <p class="why-body">
+          We're not just an IT vendor — we're your technology partner. Our values are transparency, accountability, and continuous innovation — always putting clients' success first. With proactive monitoring, dedicated account management, and a team that picks up the phone 24/7, we treat your infrastructure like it's our own.
+        </p>
+        <a href="#contact" class="btn-primary">FIND YOUR SOLUTION &rarr;</a>
+      </div>
+
+      <div class="why-cards reveal reveal-delay-1">
+        <div class="why-card">
+          <div class="why-card-icon">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 2 L20 5.5 L20 12 C20 16.5 16.5 20.5 12 22 C7.5 20.5 4 16.5 4 12 L4 5.5 Z" fill="rgba(43,136,204,0.15)" stroke="#2B88CC" stroke-width="1.4" stroke-linejoin="round"/>
+              <path d="M8.5 12 L11 14.5 L15.5 9.5" stroke="#2B88CC" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <div class="why-card-text">
+            <h4>Enterprise-Grade Security</h4>
+            <p>End-to-end threat protection, SOC monitoring, and 3,245+ attacks blocked for our clients.</p>
+          </div>
+        </div>
+        <div class="why-card">
+          <div class="why-card-icon">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="12" cy="12" r="8.5" stroke="#2B88CC" stroke-width="1.4"/>
+              <path d="M12 7 L12 12 L15.5 14" stroke="#2B88CC" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M4.5 4.5 L6 6" stroke="#2B88CC" stroke-width="1.4" stroke-linecap="round"/>
+              <path d="M19.5 4.5 L18 6" stroke="#2B88CC" stroke-width="1.4" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <div class="why-card-text">
+            <h4>Response in Minutes</h4>
+            <p>Our SLA guarantees rapid response. Your business never waits — we're on it before you call.</p>
+          </div>
+        </div>
+        <div class="why-card">
+          <div class="why-card-icon">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 2 C8.7 2 6 4.9 6 8.5 C6 13.5 12 22 12 22 C12 22 18 13.5 18 8.5 C18 4.9 15.3 2 12 2 Z" fill="rgba(43,136,204,0.15)" stroke="#2B88CC" stroke-width="1.4"/>
+              <circle cx="12" cy="8.5" r="2.2" fill="#2B88CC"/>
+            </svg>
+          </div>
+          <div class="why-card-text">
+            <h4>4 Australian Offices</h4>
+            <p>Local teams in Sydney, Melbourne, Brisbane, and Perth. On-site when you need it.</p>
+          </div>
+        </div>
+        <div class="why-card">
+          <div class="why-card-icon">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="2.5" y="15" width="4.5" height="7" rx="1" fill="rgba(43,136,204,0.25)" stroke="#2B88CC" stroke-width="1.2"/>
+              <rect x="9.5" y="10" width="4.5" height="12" rx="1" fill="rgba(43,136,204,0.45)" stroke="#2B88CC" stroke-width="1.2"/>
+              <rect x="16.5" y="4.5" width="4.5" height="17.5" rx="1" fill="#2B88CC" stroke="#2B88CC" stroke-width="1.2"/>
+              <path d="M4.5 12 L11.5 7.5 L18.5 2.5" stroke="#2B88CC" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M15.5 2.5 L18.5 2.5 L18.5 5.5" stroke="#2B88CC" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <div class="why-card-text">
+            <h4>Scales With You</h4>
+            <p>From 5-person startups to 500-employee enterprises — our solutions grow with your business.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============================================================
+       9. TESTIMONIALS
+  ============================================================ -->
+  <section class="testimonials">
+    <div class="container">
+
+      <div class="testimonials-header reveal">
+        <div class="section-label">
+          <div class="dots"><div class="dot"></div><div class="dot"></div></div>
+          TESTIMONIALS
+        </div>
+        <h2 class="testimonials-h2">What Our Clients Say</h2>
+        <p class="testimonials-sub">Real feedback from businesses across Australia who rely on BIT Solution.</p>
+      </div>
+
+      <div class="testimonials-grid">
+
+        <div class="testimonial-card reveal">
+          <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p class="testimonial-quote">"Very professional and has a great attitude towards the work. Responsive, knowledgeable, and genuinely committed to results."</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">PH</div>
+            <div>
+              <div class="testimonial-name">Peter Harvey</div>
+              <div class="testimonial-role">Project Manager</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card reveal reveal-delay-1">
+          <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p class="testimonial-quote">"Skilled team offered helpful ideas and were highly accessible throughout. The cybersecurity audit found vulnerabilities we didn't even know existed."</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">AD</div>
+            <div>
+              <div class="testimonial-name">Ana&euml;l Dupuis</div>
+              <div class="testimonial-role">Operations Director</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card reveal reveal-delay-2">
+          <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p class="testimonial-quote">"Knowledgeable, hard-working, and driven. They established effective workflows and cut our IT costs significantly."</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">LR</div>
+            <div>
+              <div class="testimonial-name">L&eacute;on Renaud</div>
+              <div class="testimonial-role">Retail Manager</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       10. FAQ SECTION
+  ============================================================ -->
+  <section class="faq" id="faq">
+    <div class="container">
+      <div class="faq-header reveal">
+        <div class="section-label">
+          <div class="dots"><div class="dot"></div><div class="dot"></div></div>
+          SUPPORT
+        </div>
+        <h2 class="faq-h2">Frequently Asked Questions</h2>
+        <p class="faq-sub">Everything you need to know about working with BIT Solution.</p>
+      </div>
+
+      <div class="faq-list reveal reveal-delay-1">
+
+        <div class="faq-item">
+          <div class="faq-question">
+            What services do you offer?
+            <span class="faq-icon">+</span>
+          </div>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">We offer Managed IT Services, Cloud Solutions, Cyber Security, Business VOIP Phone Services, Office Network Installation, Digital Marketing, Security Camera Installation, Procurement Services, IT Consulting, and 24/7 IT Support — everything your business needs under one roof.</div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">
+            How fast do you respond to support requests?
+            <span class="faq-icon">+</span>
+          </div>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">Within minutes. We provide 24/7 support with guaranteed response times backed by an enterprise ticketing system. Critical issues are escalated immediately to our senior engineers.</div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">
+            Do you work with small businesses?
+            <span class="faq-icon">+</span>
+          </div>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">Absolutely. Our solutions are scalable and priced for businesses of all sizes — from 5-person startups to 500-employee enterprises. We tailor every plan to your specific needs and budget.</div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">
+            Are there long-term contracts?
+            <span class="faq-icon">+</span>
+          </div>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">No lock-in required. We offer flexible monthly, quarterly, or annual plans. We earn your business every month through results, not contracts.</div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">
+            How do you secure our cloud data?
+            <span class="faq-icon">+</span>
+          </div>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">Through a multi-layered approach: end-to-end encryption at rest and in transit, multi-factor authentication, role-based access controls, regular third-party audits, and 24/7 threat monitoring. Our cloud infrastructure is hosted on Australian data centres.</div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">
+            Where are your offices located?
+            <span class="faq-icon">+</span>
+          </div>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">Our headquarters is in Sydney, NSW at 8 Naroon Drive, Kalkallo. We also have offices in Melbourne (123 Collins St), Brisbane (56 Edward St), and Perth (88 Hay St). On-site service is available at all locations.</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       11. OFFICES SECTION
+  ============================================================ -->
+  <section class="offices" id="offices">
+    <div class="container">
+      <div class="offices-header reveal">
+        <div class="section-label">
+          <div class="dots"><div class="dot"></div><div class="dot"></div></div>
+          OUR LOCATIONS
+        </div>
+        <h2 class="offices-h2">Local Offices. Global Reach.</h2>
+        <p class="offices-sub">On-site service at all locations. Remote support available across Australia, Canada, and the United States.</p>
+      </div>
+
+      <div class="offices-grid">
+
+        <div class="office-card primary reveal">
+          <span class="office-badge">Headquarters</span>
+          <div class="office-city">Sydney, NSW</div>
+          <div class="office-address">8 Naroon Drive, Kalkallo<br>Sydney, NSW 2000</div>
+          <div class="office-contact">
+            <a href="tel:+61470406030">0470 406 030</a>
+            <a href="mailto:info@bitsolution.au">info@bitsolution.au</a>
+          </div>
+        </div>
+
+        <div class="office-card reveal reveal-delay-1">
+          <div class="office-city">Melbourne, VIC</div>
+          <div class="office-address">123 Collins St<br>Melbourne, VIC 3000</div>
+          <div class="office-contact">
+            <a href="tel:+61470406030">0470 406 030</a>
+            <a href="mailto:info@bitsolution.au">info@bitsolution.au</a>
+          </div>
+        </div>
+
+        <div class="office-card reveal reveal-delay-2">
+          <div class="office-city">Brisbane, QLD</div>
+          <div class="office-address">56 Edward St<br>Brisbane, QLD 4000</div>
+          <div class="office-contact">
+            <a href="tel:+61470406030">0470 406 030</a>
+            <a href="mailto:info@bitsolution.au">info@bitsolution.au</a>
+          </div>
+        </div>
+
+        <div class="office-card reveal reveal-delay-3">
+          <div class="office-city">Perth, WA</div>
+          <div class="office-address">88 Hay St<br>Perth, WA 6000</div>
+          <div class="office-contact">
+            <a href="tel:+61470406030">0470 406 030</a>
+            <a href="mailto:info@bitsolution.au">info@bitsolution.au</a>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Global Markets -->
+      <div class="global-markets reveal">
+        <div class="global-markets-title">Markets We Serve</div>
+        <div class="global-markets-grid">
+          <div class="market-country">
+            <div class="market-flag">🇦🇺</div>
+            <div class="market-name">Australia</div>
+            <div class="market-cities">
+              <span>Melbourne</span><span>Sydney</span><span>Adelaide</span><span>Brisbane</span>
+            </div>
+          </div>
+          <div class="market-country">
+            <div class="market-flag">🇨🇦</div>
+            <div class="market-name">Canada</div>
+            <div class="market-cities">
+              <span>Toronto</span><span>Ottawa</span><span>Montreal</span>
+            </div>
+          </div>
+          <div class="market-country">
+            <div class="market-flag">🇺🇸</div>
+            <div class="market-name">United States</div>
+            <div class="market-cities">
+              <span>New York</span><span>Dallas</span><span>Las Vegas</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============================================================
+       12. CTA BAND + CONTACT FORM
+  ============================================================ -->
+  <section class="cta-band" id="contact">
+    <div class="cta-band-inner">
+
+      <!-- Left: Text + direct contact -->
+      <div class="cta-text reveal">
+        <h2>Start the conversation with a free 15-minute consultation</h2>
+        <p class="cta-band-tagline">
+          Whether you need managed IT, a cyber security audit, or help choosing the right cloud solution — our certified engineers are ready to help. No pressure, no commitment.
+        </p>
+        <div class="cta-direct">
+          <a href="tel:+61470406030"><i class="fa-solid fa-phone"></i> 0470 406 030</a>
+          <a href="mailto:info@bitsolution.au"><i class="fa-solid fa-envelope"></i> info@bitsolution.au</a>
+          <a href="mailto:info@bitsolution.au"><i class="fa-solid fa-envelope"></i> info@bitsolution.au</a>
+          <a href="https://bitsolution.ca" target="_blank" rel="noopener"><i class="fa-solid fa-globe"></i> bitsolution.ca</a>
+        </div>
+      </div>
+
+      <!-- Right: Contact form -->
+      <div class="reveal reveal-delay-1">
+        <form class="contact-form" action="mailto:info@bitsolution.au" method="POST" enctype="text/plain">
+          <h3>Send Us a Message</h3>
+
+          <div class="form-row">
+            <label for="cf-name">Full Name *</label>
+            <input type="text" id="cf-name" name="Full Name" placeholder="Your full name" required />
+          </div>
+
+          <div class="form-row">
+            <label for="cf-email">Business Email *</label>
+            <input type="email" id="cf-email" name="Business Email" placeholder="you@yourcompany.com" required />
+          </div>
+
+          <div class="form-row">
+            <label for="cf-phone">Phone (optional)</label>
+            <input type="tel" id="cf-phone" name="Phone" placeholder="+1 (___) ___-____" />
+          </div>
+
+          <div class="form-row">
+            <label for="cf-service">Service Interest</label>
+            <select id="cf-service" name="Service Interest">
+              <option value="">Select a service...</option>
+              <option>Managed IT Services</option>
+              <option>Office Network Installation</option>
+              <option>Cloud Services</option>
+              <option>Cyber Security Services</option>
+              <option>Business VOIP Phone Services</option>
+              <option>Procurement Services</option>
+              <option>Digital Marketing Services</option>
+              <option>Security Camera Installation</option>
+              <option>IT Consulting</option>
+              <option>24/7 IT Support</option>
+              <option>General Inquiry</option>
+            </select>
+          </div>
+
+          <div class="form-row">
+            <label for="cf-message">Message *</label>
+            <textarea id="cf-message" name="Message" placeholder="Tell us about your business and what you need..." required></textarea>
+          </div>
+
+          <button type="submit" class="form-submit">SEND MESSAGE &rarr;</button>
+        </form>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============================================================
+       13. FOOTER
+  ============================================================ -->
+  <footer class="footer">
+    <div class="container">
+
+      <div>
+        <div class="footer-logo">
+          <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="130" height="33" viewBox="0 0 187.5 48" style="display:block;filter:brightness(0) invert(1);">
+            <defs>
+              <style>.fa{fill:none;}.fa,.fb,.fe{fill-rule:evenodd;}.fb,.ff{fill:#063459;}.fc{clip-path:url(#fa);}.fd{clip-path:url(#fb);}.fe{fill:url(#fc);}.ff{font-size:6px;font-family:Nunito-Regular,Nunito;}</style>
+              <clipPath id="fa"><path d="M0,0H42.727V40.516H0Z"></path></clipPath>
+              <clipPath id="fb"><path d="M22.82,23.119V5.037a1.061,1.061,0,0,1,1.352-1.02L41.949,8.982A1.062,1.062,0,0,1,42.727,10V28.084a1.062,1.062,0,0,1-1.352,1.02L23.6,24.138a1.054,1.054,0,0,1-.777-1.02ZM9.4,11.373l9.152,2.559a1.065,1.065,0,0,0,1.352-1.019v-9.3a1.061,1.061,0,0,0-.777-1.02L9.977.041A1.061,1.061,0,0,0,8.625,1.06v9.293A1.054,1.054,0,0,0,9.4,11.373Zm9.727,4.707L1.352,11.115A1.062,1.062,0,0,0,0,12.134V30.216a1.062,1.062,0,0,0,.777,1.02L18.555,36.2a1.061,1.061,0,0,0,1.352-1.02V17.1a1.057,1.057,0,0,0-.777-1.02Zm14.2,12.766-9.152-2.559a1.065,1.065,0,0,0-1.352,1.019v9.3a1.057,1.057,0,0,0,.777,1.02l9.152,2.555A1.061,1.061,0,0,0,34.1,39.158V29.865a1.054,1.054,0,0,0-.777-1.02Z"></path></clipPath>
+              <linearGradient id="fc" x1="1.095" y1="0.244" x2="-0.095" y2="0.757" gradientUnits="objectBoundingBox"><stop offset="0" stop-color="#1283dd"></stop><stop offset="0.5" stop-color="#399ce7"></stop><stop offset="1" stop-color="#5ab0ef"></stop></linearGradient>
+            </defs>
+            <path class="fa" d="M0,0H187.5V48H0Z"></path>
+            <g transform="translate(50.787 14.242)"><path class="fb" d="M0,14.656H5.793a4.353,4.353,0,0,0,4.32-4.4A3.544,3.544,0,0,0,8.6,7.328,3.579,3.579,0,0,0,9.949,4.441,4.02,4.02,0,0,0,5.793,0H0ZM2.949,2.926h2.6A1.356,1.356,0,0,1,6.9,4.4,1.368,1.368,0,0,1,5.551,5.875h-2.6Zm0,5.875h2.6a1.44,1.44,0,0,1,1.473,1.453,1.457,1.457,0,0,1-1.473,1.477h-2.6Z"></path></g>
+            <g transform="translate(63.5 14.262)"><path class="fb" d="M2.93,14.637V0H0V14.637Z"></path></g>
+            <g transform="translate(68.497 14.281)"><path class="fb" d="M6.57,14.617V2.906h3.644V0H0V2.906H3.645V14.617Z"></path></g>
+            <g transform="translate(86.059 14.145)"><path class="fb" d="M0,13.813a9.148,9.148,0,0,0,4.629,1.063,4.339,4.339,0,0,0,4.422-4.441c0-2.332-1.965-3.645-4.238-4.484-.84-.285-1.555-.652-1.637-1.473A1.445,1.445,0,0,1,4.629,2.84a6.64,6.64,0,0,1,2.988.613L7.984.629A8.6,8.6,0,0,0,4.34.016,4.287,4.287,0,0,0,.207,4.477c0,2.457,2.047,3.625,4.34,4.465.816.285,1.453.652,1.516,1.492A1.478,1.478,0,0,1,4.547,11.91,6.587,6.587,0,0,1,.371,10.742Z"></path></g>
+            <g transform="translate(97.054 14.016)"><path class="fb" d="M7.553,15.086C17.627,15.086,17.627,0,7.553,0s-10.07,15.086,0,15.086Zm0-3.027c-5.855,0-5.855-9.051,0-9.051s5.855,9.051,0,9.051Z"></path></g>
+            <g transform="translate(114.903 14.262)"><path class="fb" d="M0,0V14.637H7.574V11.711H2.93V0Z"></path></g>
+            <g transform="translate(124.913 14.262)"><path class="fb" d="M10.586,9.539V0H7.68V9.52c0,3.07-4.75,3.07-4.75,0V0H0V9.539c0,6.961,10.586,6.961,10.586,0Z"></path></g>
+            <g transform="translate(137.505 14.281)"><path class="fb" d="M6.57,14.617V2.906h3.644V0H0V2.906H3.645V14.617Z"></path></g>
+            <g transform="translate(149.929 14.262)"><path class="fb" d="M2.93,14.637V0H0V14.637Z"></path></g>
+            <g transform="translate(155.642 14.016)"><path class="fb" d="M7.553,15.086C17.627,15.086,17.627,0,7.553,0s-10.07,15.086,0,15.086Zm0-3.027c-5.855,0-5.855-9.051,0-9.051s5.855,9.051,0,9.051Z"></path></g>
+            <g transform="translate(173.491 13.953)"><path class="fb" d="M2.93,6.98l7.41,8.273h.777V.328H8.168V8.6L.777,0H0V14.945H2.93Z"></path></g>
+            <g transform="translate(3.027 3.379)">
+              <path class="fa" d="M0,0H42.727V40.516H0Z"></path>
+              <g class="fc"><g transform="translate(0 0.155)">
+                <path class="fa" d="M22.82,23.119V5.037a1.061,1.061,0,0,1,1.352-1.02L41.949,8.982A1.062,1.062,0,0,1,42.727,10V28.084a1.062,1.062,0,0,1-1.352,1.02L23.6,24.138a1.054,1.054,0,0,1-.777-1.02ZM9.4,11.373l9.152,2.559a1.065,1.065,0,0,0,1.352-1.019v-9.3a1.061,1.061,0,0,0-.777-1.02L9.977.041A1.061,1.061,0,0,0,8.625,1.06v9.293A1.054,1.054,0,0,0,9.4,11.373Zm9.727,4.707L1.352,11.115A1.062,1.062,0,0,0,0,12.134V30.216a1.062,1.062,0,0,0,.777,1.02L18.555,36.2a1.061,1.061,0,0,0,1.352-1.02V17.1a1.057,1.057,0,0,0-.777-1.02Zm14.2,12.766-9.152-2.559a1.065,1.065,0,0,0-1.352,1.019v9.3a1.057,1.057,0,0,0,.777,1.02l9.152,2.555A1.061,1.061,0,0,0,34.1,39.158V29.865a1.054,1.054,0,0,0-.777-1.02Z"></path>
+                <g class="fd"><g transform="translate(0 -0.151)"><path class="fe" d="M42.727,0H0V40.512H42.727Z"></path></g></g>
+              </g></g>
+            </g>
+            <text class="ff" transform="translate(48 38)"><tspan x="0" y="0" xml:space="preserve"> DELIVERING YOUR TECHNOLOGY SOLUTIONS</tspan></text>
+          </svg>
+        </div>
+        <p class="footer-tagline">
+          Trusted IT services for Australian businesses. Managed IT, cyber security, cloud solutions, and 24/7 support — all under one roof. Secure. Scalable. Smart.
+        </p>
+        <div class="footer-social">
+          <a href="https://facebook.com/bitsolutionau" target="_blank" rel="noopener" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="https://instagram.com/bitsolutionau" target="_blank" rel="noopener" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+          <a href="https://twitter.com/BITSolutionAU" target="_blank" rel="noopener" aria-label="X / Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+          <a href="https://linkedin.com/company/bitsolutionau" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h5>Services</h5>
+        <ul>
+          <li><a href="#services">Managed IT Services</a></li>
+          <li><a href="#services">Cyber Security</a></li>
+          <li><a href="#services">Cloud Services</a></li>
+          <li><a href="#services">Business VOIP</a></li>
+          <li><a href="#services">Digital Marketing</a></li>
+          <li><a href="#services">Security Cameras</a></li>
+          <li><a href="#services">IT Consulting</a></li>
+          <li><a href="#services">24/7 IT Support</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5>Company</h5>
+        <ul>
+          <li><a href="#about">About Us</a></li>
+          <li><a href="#why">Why BIT Solution</a></li>
+          <li><a href="#services">Our Services</a></li>
+          <li><a href="#offices">Our Locations</a></li>
+          <li><a href="#faq">FAQ</a></li>
+          <li><a href="https://bitsolution.ca" target="_blank" rel="noopener">Privacy Policy</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5>Contact</h5>
+        <div class="footer-contact-item">
+          <span class="icon"><i class="fa-solid fa-location-dot"></i></span>
+          <span>8 Naroon Drive, Kalkallo VIC 3064</span>
+        </div>
+        <div class="footer-contact-item">
+          <span class="icon"><i class="fa-solid fa-phone"></i></span>
+          <a href="tel:+61470406030">0470 406 030</a>
+        </div>
+        <div class="footer-contact-item">
+          <span class="icon"><i class="fa-solid fa-envelope"></i></span>
+          <a href="mailto:info@bitsolution.au">info@bitsolution.au</a>
+        </div>
+        <div class="footer-contact-item">
+          <span class="icon"><i class="fa-solid fa-envelope"></i></span>
+          <a href="mailto:info@bitsolution.au">info@bitsolution.au</a>
+        </div>
+        <div class="footer-contact-item">
+          <span class="icon"><i class="fa-solid fa-globe"></i></span>
+          <a href="https://bitsolution.ca" target="_blank" rel="noopener">bitsolution.ca</a>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+      <span>&copy; 2025 BIT Solution. All rights reserved. Australian-owned &amp; operated.</span>
+      <span>Proudly Australian &#127462;&#127482;</span>
+    </div>
+  </footer>
+
+  <!-- Back to top -->
+  <button class="back-to-top" id="back-to-top" aria-label="Back to top">&#8593;</button>
+
+  <!-- ============================================================
+       FLOATING ELEMENTS
+  ============================================================ -->
+
+<!-- Idea 2: Network Packet Tracer with Shield -->
+  <div id="packet-tracer" aria-hidden="true">
+    <div class="packet-trail" id="packet-trail"></div>
+    <div class="packet-node" id="packet-node">
+      <div class="packet-ring r1"></div>
+      <div class="packet-ring r2"></div>
+      <svg id="shield-svg" viewBox="0 0 80 90" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle class="shield-ring" cx="40" cy="46" r="34" stroke="#2B88CC" stroke-width="1" fill="none" opacity="0"/>
+        <circle class="shield-ring" cx="40" cy="46" r="44" stroke="#2B88CC" stroke-width="0.6" fill="none" opacity="0"/>
+        <path class="shield-body" d="M40 4 L72 18 L72 44 C72 62 57 76 40 84 C23 76 8 62 8 44 L8 18 Z"
+          fill="rgba(43,136,204,0.08)" stroke="#2B88CC" stroke-width="2" stroke-linejoin="round"/>
+        <g class="shield-scan" opacity="0">
+          <line x1="40" y1="28" x2="24" y2="48" stroke="#2B88CC" stroke-width="1" stroke-dasharray="3 3"/>
+          <line x1="40" y1="28" x2="56" y2="48" stroke="#2B88CC" stroke-width="1" stroke-dasharray="3 3"/>
+          <line x1="24" y1="48" x2="40" y2="62" stroke="#2B88CC" stroke-width="1" stroke-dasharray="3 3"/>
+          <line x1="56" y1="48" x2="40" y2="62" stroke="#2B88CC" stroke-width="1" stroke-dasharray="3 3"/>
+          <circle cx="40" cy="28" r="3" fill="#2B88CC"/>
+          <circle cx="24" cy="48" r="3" fill="#2B88CC"/>
+          <circle cx="56" cy="48" r="3" fill="#2B88CC"/>
+          <circle cx="40" cy="62" r="3" fill="#2B88CC"/>
+        </g>
+        <g class="shield-lock" opacity="0">
+          <rect x="29" y="42" width="22" height="16" rx="3" fill="rgba(43,136,204,0.15)" stroke="#2B88CC" stroke-width="1.5"/>
+          <path d="M33 42 V37 C33 31.5 47 31.5 47 37 V42" stroke="#2B88CC" stroke-width="1.5" fill="none"/>
+          <circle cx="40" cy="50" r="2.5" fill="#2B88CC"/>
+        </g>
+        <g class="shield-check" opacity="0">
+          <path d="M28 46 L37 56 L54 36" stroke="#2B88CC" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        </g>
+      </svg>
+      <div class="shield-label" id="shield-label">PROTECTED</div>
+    </div>
+  </div>
+
+  <style>
+    /* ---- Packet Tracer ---- */
+    #packet-tracer {
+      position: fixed;
+      left: calc(2.2vw - 1px);
+      top: 0;
+      width: 96px;
+      height: 100vh;
+      z-index: 90;
+      pointer-events: none;
+      display: flex;
+      justify-content: center;
+    }
+    .packet-trail {
+      position: absolute;
+      left: 50%;
+      top: 0;
+      width: 2px;
+      transform: translateX(-50%);
+      background: linear-gradient(to bottom, transparent, rgba(43,136,204,0.3), transparent);
+      height: 100%;
+      opacity: 0.5;
+    }
+    .packet-node {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 90px;
+      height: 90px;
+      top: 15%;
+      transition: top 0.08s linear;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+    }
+    #shield-svg {
+      width: 74px;
+      height: 84px;
+      filter: drop-shadow(0 3px 14px rgba(43,136,204,0.28));
+      transition: filter 0.4s ease;
+    }
+    .shield-ring {
+      transform-origin: 40px 46px;
+      transition: opacity 0.5s ease;
+    }
+    .shield-body { transition: fill 0.4s ease; }
+    .shield-scan, .shield-lock, .shield-check { transition: opacity 0.35s ease; }
+    @keyframes ringPulse {
+      0%   { opacity: 0.55; transform: scale(1); }
+      100% { opacity: 0;    transform: scale(1.9); }
+    }
+    .shield-pulsing .shield-ring:nth-child(1) { animation: ringPulse 1.8s ease-out infinite; }
+    .shield-pulsing .shield-ring:nth-child(2) { animation: ringPulse 1.8s ease-out 0.65s infinite; }
+    .shield-label {
+      font-family: 'Inter Tight', sans-serif;
+      font-size: 0.58rem;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      color: var(--blue);
+      opacity: 0.55;
+      white-space: nowrap;
+      transition: opacity 0.3s ease;
+    }
+    .packet-ring {
+      position: absolute;
+      border-radius: 50%;
+      border: 1px solid rgba(43,136,204,0.3);
+      animation: packetPing 2.4s ease-out infinite;
+    }
+    .packet-ring.r1 { inset: -6px; animation-delay: 0s; }
+    .packet-ring.r2 { inset: -16px; animation-delay: 0.9s; }
+    @keyframes packetPing {
+      0%   { opacity: 0.7; transform: scale(1); }
+      100% { opacity: 0;   transform: scale(2.2); }
+    }
+    .packet-section-ping {
+      position: fixed;
+      left: 2.2vw;
+      width: 120px;
+      height: 1px;
+      background: linear-gradient(to right, rgba(43,136,204,0.55), transparent);
+      pointer-events: none;
+      z-index: 89;
+      opacity: 0;
+      transform: translateX(0);
+      transition: opacity 0.3s ease;
+    }
+    .packet-section-ping.fired { animation: pingLine 0.9s ease-out forwards; }
+    @keyframes pingLine {
+      0%   { opacity: 0.7; transform: scaleX(0); transform-origin: left; }
+      60%  { opacity: 0.5; transform: scaleX(1); }
+      100% { opacity: 0; }
+    }
+
+    @media (max-width: 768px) {
+      #shield-float, #packet-tracer { display: none; }
+    }
+  </style>
+
+  <!-- ============================================================
+       JAVASCRIPT
+  ============================================================ -->
+  <script>
+    // --- Nav: shadow on scroll ---
+    const nav = document.getElementById('main-nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 20);
+    }, { passive: true });
+
+    // --- Hamburger menu ---
+    const hamburger = document.getElementById('hamburger');
+    const navMobile = document.getElementById('nav-mobile');
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('open');
+      navMobile.classList.toggle('open');
+    });
+    navMobile.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        hamburger.classList.remove('open');
+        navMobile.classList.remove('open');
+      });
+    });
+
+    // --- IntersectionObserver reveal ---
+    const reveals = document.querySelectorAll('.reveal');
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    reveals.forEach(el => revealObserver.observe(el));
+
+    // --- Active nav highlighting on scroll ---
+    const sections = document.querySelectorAll('section[id], div[id="hero"]');
+    const navLinks = document.querySelectorAll('.nav-links [data-section]');
+
+    function setActiveNav() {
+      let current = '';
+      sections.forEach(sec => {
+        const top = sec.getBoundingClientRect().top;
+        if (top <= 100) current = sec.id;
+      });
+      navLinks.forEach(link => {
+        link.classList.toggle('active', link.dataset.section === current);
+      });
+    }
+    window.addEventListener('scroll', setActiveNav, { passive: true });
+    setActiveNav();
+
+    // --- FAQ Accordion ---
+    document.querySelectorAll('.faq-question').forEach(question => {
+      question.addEventListener('click', () => {
+        const item = question.parentElement;
+        const answer = item.querySelector('.faq-answer');
+        const isOpen = item.classList.contains('open');
+
+        // Close all
+        document.querySelectorAll('.faq-item').forEach(i => {
+          i.classList.remove('open');
+          i.querySelector('.faq-answer').style.maxHeight = null;
+        });
+
+        // Open clicked if it was closed
+        if (!isOpen) {
+          item.classList.add('open');
+          answer.style.maxHeight = answer.scrollHeight + 'px';
+        }
+      });
+    });
+
+    // --- Back to top ---
+    const backToTop = document.getElementById('back-to-top');
+    window.addEventListener('scroll', () => {
+      backToTop.classList.toggle('visible', window.scrollY > 400);
+    }, { passive: true });
+    backToTop.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    // --- Shield state (driven by scroll, lives inside packet node) ---
+    (function () {
+      const svg   = document.getElementById('shield-svg');
+      const label = document.getElementById('shield-label');
+      if (!svg) return;
+      const scan  = svg.querySelector('.shield-scan');
+      const lock  = svg.querySelector('.shield-lock');
+      const check = svg.querySelector('.shield-check');
+
+      function setState(s) {
+        scan.style.opacity  = s === 1 ? '1' : '0';
+        lock.style.opacity  = s === 2 ? '1' : '0';
+        check.style.opacity = s === 3 ? '1' : '0';
+        svg.classList.toggle('shield-pulsing', s === 0);
+        const labels = ['PROTECTED', 'SCANNING', 'SECURED', 'VERIFIED'];
+        const glows  = ['rgba(43,136,204,0.18)', 'rgba(43,136,204,0.35)', 'rgba(43,136,204,0.45)', 'rgba(91,189,255,0.5)'];
+        label.textContent = labels[s];
+        svg.style.filter  = `drop-shadow(0 2px 14px ${glows[s]})`;
+      }
+
+      const sectionIds = ['hero', 'services', 'why', 'contact'];
+      function updateShield() {
+        const mid = window.scrollY + window.innerHeight * 0.45;
+        let state = 0;
+        sectionIds.forEach((id, i) => {
+          const el = document.getElementById(id);
+          if (el && mid >= el.getBoundingClientRect().top + window.scrollY) state = Math.min(i, 3);
+        });
+        setState(state);
+      }
+      setState(0);
+      window.addEventListener('scroll', updateShield, { passive: true });
+      updateShield();
+    })();
+
+    // --- Idea 2: Network Packet Tracer ---
+    (function () {
+      const packetNode = document.getElementById('packet-node');
+      if (!packetNode) return;
+
+      const MIN_PCT = 8;   // % from top of viewport
+      const MAX_PCT = 88;  // % from top of viewport
+      let lastSectionTop = -1;
+
+      function firePing(vpTop) {
+        const ping = document.createElement('div');
+        ping.className = 'packet-section-ping';
+        ping.style.top = vpTop + 'px';
+        document.body.appendChild(ping);
+        requestAnimationFrame(() => ping.classList.add('fired'));
+        setTimeout(() => ping.remove(), 1000);
+      }
+
+      function updatePacket() {
+        const docH   = document.documentElement.scrollHeight - window.innerHeight;
+        const pct    = docH > 0 ? window.scrollY / docH : 0;
+        const posPct = MIN_PCT + pct * (MAX_PCT - MIN_PCT);
+        packetNode.style.top = posPct + '%';
+
+        // Fire ping when crossing a section
+        const sections = document.querySelectorAll('section[id]');
+        sections.forEach(sec => {
+          const rect = sec.getBoundingClientRect();
+          if (rect.top > -20 && rect.top < 80 && rect.top !== lastSectionTop) {
+            lastSectionTop = rect.top;
+            firePing(window.innerHeight * posPct / 100);
+          }
+        });
+      }
+
+      window.addEventListener('scroll', updatePacket, { passive: true });
+      updatePacket();
+    })();
+
+    // --- Globe Interactivity ---
+    (function () {
+      const globe = document.querySelector('.hero-globe');
+      if (!globe) return;
+
+      const nodeData = [
+        { label: 'Australia',      desc: 'Asia-Pacific network gateway' },
+        { label: 'Sydney, NSW',    desc: 'Primary HQ — 8 Naroon Drive, Kalkallo' },
+        { label: 'Melbourne, VIC', desc: 'Victoria state office' },
+        { label: 'Brisbane, QLD',  desc: 'Queensland technology hub' },
+        { label: 'Perth, WA',      desc: 'West Australia operations' },
+        { label: 'Secure VPN',    desc: 'Encrypted tunnel endpoint' },
+        { label: 'Adelaide, SA',   desc: 'South Australia node' },
+        { label: 'Headquarters',  desc: 'Operations & dispatch center' },
+      ];
+
+      const nodes   = Array.from(globe.querySelectorAll('.globe-node'));
+      const lines   = Array.from(globe.querySelectorAll('.globe-line'));
+      const tooltip = document.getElementById('globe-tooltip');
+      let pinnedIdx = null;
+
+      function getConnectedLines(idx) {
+        return lines.filter(l => l.dataset.nodes.split(',').map(Number).includes(idx));
+      }
+
+      function positionTooltip(node) {
+        const gr = globe.getBoundingClientRect();
+        const nr = node.getBoundingClientRect();
+        const cx = nr.left - gr.left + nr.width / 2;
+        const cy = nr.top  - gr.top;
+        tooltip.style.left = cx + 'px';
+        if (cy > 80) {
+          tooltip.style.top    = (cy - 8) + 'px';
+          tooltip.style.transform = 'translate(-50%, -100%)';
+        } else {
+          tooltip.style.top    = (cy + nr.height + 8) + 'px';
+          tooltip.style.transform = 'translate(-50%, 0)';
+        }
+      }
+
+      function showTooltip(node, idx, pinned) {
+        const d = nodeData[idx];
+        tooltip.innerHTML = `<strong>${d.label}</strong>${d.desc}<div class="pin-hint">${pinned ? 'Click to unpin' : 'Click to pin'}</div>`;
+        positionTooltip(node);
+        tooltip.classList.add('visible');
+      }
+
+      function hideTooltip() {
+        tooltip.classList.remove('visible');
+      }
+
+      function activateNode(node, idx) {
+        node.classList.add('hovered');
+        const connected = getConnectedLines(idx);
+        lines.forEach(l => l.classList.add('dim-line'));
+        connected.forEach(l => { l.classList.remove('dim-line'); l.classList.add('active-line'); });
+        showTooltip(node, idx, false);
+      }
+
+      function deactivateNode(node) {
+        node.classList.remove('hovered');
+        lines.forEach(l => { l.classList.remove('dim-line'); l.classList.remove('active-line'); l.style.strokeOpacity = ''; l.style.strokeWidth = ''; });
+        hideTooltip();
+      }
+
+      nodes.forEach((node, idx) => {
+        node.style.cursor = 'pointer';
+
+        node.addEventListener('mouseenter', () => {
+          if (pinnedIdx !== null) return;
+          activateNode(node, idx);
+        });
+
+        node.addEventListener('mouseleave', () => {
+          if (pinnedIdx !== null) return;
+          deactivateNode(node);
+        });
+
+        node.addEventListener('click', (e) => {
+          e.stopPropagation();
+          if (pinnedIdx === idx) {
+            // Unpin
+            node.classList.remove('pinned', 'hovered');
+            deactivateNode(node);
+            pinnedIdx = null;
+          } else {
+            if (pinnedIdx !== null) {
+              nodes[pinnedIdx].classList.remove('pinned', 'hovered');
+              lines.forEach(l => { l.classList.remove('dim-line', 'active-line'); l.style.strokeOpacity = ''; l.style.strokeWidth = ''; });
+            }
+            pinnedIdx = idx;
+            node.classList.add('pinned');
+            activateNode(node, idx);
+            showTooltip(node, idx, true);
+          }
+        });
+      });
+
+      document.addEventListener('click', () => {
+        if (pinnedIdx !== null) {
+          nodes[pinnedIdx].classList.remove('pinned', 'hovered');
+          deactivateNode(nodes[pinnedIdx]);
+          pinnedIdx = null;
+        }
+      });
+
+      // Mouse proximity: brighten nearby lines
+      const svgEl = globe.querySelector('.globe-svg');
+      globe.addEventListener('mousemove', (e) => {
+        if (pinnedIdx !== null) return;
+        const sr = svgEl.getBoundingClientRect();
+        const mx = (e.clientX - sr.left) / sr.width * 400;
+        const my = (e.clientY - sr.top)  / sr.height * 400;
+        lines.forEach(l => {
+          if (l.classList.contains('active-line') || l.classList.contains('dim-line')) return;
+          const x1 = +l.getAttribute('x1'), y1 = +l.getAttribute('y1');
+          const x2 = +l.getAttribute('x2'), y2 = +l.getAttribute('y2');
+          const dist = ptSegDist(mx, my, x1, y1, x2, y2);
+          if (dist < 28) {
+            l.style.strokeOpacity = '0.6';
+            l.style.strokeWidth   = '2';
+          } else if (dist < 65) {
+            l.style.strokeOpacity = '0.38';
+            l.style.strokeWidth   = '1.4';
+          } else {
+            l.style.strokeOpacity = '';
+            l.style.strokeWidth   = '';
+          }
+        });
+      });
+
+      globe.addEventListener('mouseleave', () => {
+        if (pinnedIdx !== null) return;
+        lines.forEach(l => { l.style.strokeOpacity = ''; l.style.strokeWidth = ''; });
+      });
+
+      function ptSegDist(px, py, x1, y1, x2, y2) {
+        const dx = x2 - x1, dy = y2 - y1;
+        const lenSq = dx * dx + dy * dy;
+        if (lenSq === 0) return Math.hypot(px - x1, py - y1);
+        const t = Math.max(0, Math.min(1, ((px - x1) * dx + (py - y1) * dy) / lenSq));
+        return Math.hypot(px - (x1 + t * dx), py - (y1 + t * dy));
+      }
+    })();
+  </script>
+
+</body>
+</html>
