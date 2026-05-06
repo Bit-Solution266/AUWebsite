@@ -665,6 +665,145 @@
     }
 
     /* ============================================================
+       INDUSTRIES SECTION
+    ============================================================ */
+    .industries {
+      background: #f4f7fb;
+      padding: 80px 5%;
+    }
+    .industries-inner { max-width: 1200px; margin: 0 auto; }
+    .industries-header { margin-bottom: 48px; text-align: center; }
+    .industries-header .section-label { justify-content: center; color: var(--blue); }
+    .industries-header .section-label .dot { background: rgba(15,28,57,0.25); }
+    .industries-header .section-label .dot:first-child { background: var(--blue); }
+    .industries-h2 {
+      font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+      font-weight: 700;
+      color: var(--ink, #0f1c39);
+      line-height: 1.2;
+      margin-bottom: 16px;
+    }
+    .industries-sub {
+      font-size: 0.92rem;
+      color: #4a5a76;
+      max-width: 620px;
+      margin: 0 auto;
+      line-height: 1.7;
+    }
+    .industries-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+    }
+    .industry-card {
+      background: #fff;
+      border: 1px solid rgba(15,28,57,0.08);
+      border-radius: 10px;
+      padding: 24px 20px;
+      transition: transform 0.18s, box-shadow 0.18s, border-color 0.18s;
+      cursor: default;
+    }
+    .industry-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 28px rgba(43,136,204,0.14);
+      border-color: rgba(43,136,204,0.4);
+    }
+    .industry-icon {
+      font-size: 1.6rem;
+      margin-bottom: 12px;
+      color: var(--blue);
+    }
+    .industry-name {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--ink, #0f1c39);
+      margin-bottom: 6px;
+    }
+    .industry-desc {
+      font-size: 0.8rem;
+      color: #4a5a76;
+      line-height: 1.55;
+    }
+    @media (max-width: 1024px) { .industries-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 480px) { .industries-grid { grid-template-columns: 1fr; } }
+
+    /* ============================================================
+       PROCESS SECTION
+    ============================================================ */
+    .process {
+      background: rgba(13,27,62,0.95);
+      padding: 80px 5%;
+      position: relative;
+      overflow: hidden;
+    }
+    .process-inner { max-width: 1200px; margin: 0 auto; position: relative; z-index: 1; }
+    .process-header { margin-bottom: 56px; text-align: center; }
+    .process-header .section-label { justify-content: center; color: var(--blue); }
+    .process-header .section-label .dot { background: rgba(255,255,255,0.45); }
+    .process-header .section-label .dot:first-child { background: var(--blue); }
+    .process-h2 {
+      font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+      font-weight: 700;
+      color: #fff;
+      line-height: 1.2;
+      margin-bottom: 16px;
+    }
+    .process-sub {
+      font-size: 0.92rem;
+      color: rgba(255,255,255,0.65);
+      max-width: 620px;
+      margin: 0 auto;
+      line-height: 1.7;
+    }
+    .process-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+      position: relative;
+    }
+    .process-grid::before {
+      content: "";
+      position: absolute;
+      top: 36px; left: 12.5%; right: 12.5%;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, rgba(43,136,204,0.5), transparent);
+      z-index: 0;
+    }
+    .process-step {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      padding: 0 12px;
+    }
+    .process-num {
+      width: 72px; height: 72px;
+      margin: 0 auto 20px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #1283dd, #5ab0ef);
+      color: #fff;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.4rem; font-weight: 700;
+      box-shadow: 0 8px 24px rgba(43,136,204,0.35);
+      border: 4px solid rgba(13,27,62,0.95);
+    }
+    .process-name {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 8px;
+    }
+    .process-desc {
+      font-size: 0.82rem;
+      color: rgba(255,255,255,0.65);
+      line-height: 1.6;
+    }
+    @media (max-width: 1024px) {
+      .process-grid { grid-template-columns: repeat(2, 1fr); gap: 36px; }
+      .process-grid::before { display: none; }
+    }
+    @media (max-width: 480px) { .process-grid { grid-template-columns: 1fr; } }
+
+    /* ============================================================
        5. SERVICES SECTION
     ============================================================ */
     .services {
@@ -1708,6 +1847,8 @@
           </div>
         </div>
 
+        <a href="#industries" data-section="industries">Industries</a>
+        <a href="#process" data-section="process">Process</a>
         <a href="#why" data-section="why">Solutions</a>
         <a href="#faq" data-section="faq">Support</a>
         <a href="#contact" data-section="contact">Contact</a>
@@ -1733,6 +1874,8 @@
       <a href="#services" class="mobile-service-link">Security Camera Installation</a>
       <a href="#services" class="mobile-service-link">IT Consulting</a>
       <a href="#services" class="mobile-service-link">24/7 IT Support</a>
+      <a href="#industries">Industries</a>
+      <a href="#process">Process</a>
       <a href="#why">Solutions</a>
       <a href="#faq">Support / FAQ</a>
       <a href="#contact">Contact</a>
@@ -2013,6 +2156,72 @@
         </div>
       </div>
 
+    </div>
+  </section>
+
+  <!-- ============================================================
+       INDUSTRIES SECTION
+  ============================================================ -->
+  <section class="industries" id="industries">
+    <div class="industries-inner">
+      <div class="industries-header reveal">
+        <div class="section-label">
+          <div class="dots"><div class="dot"></div><div class="dot"></div></div>
+          INDUSTRIES WE SERVE
+        </div>
+        <h2 class="industries-h2">Built for the way your industry works.</h2>
+        <p class="industries-sub">From clinics to construction sites, we tailor IT to fit the compliance, uptime, and security demands of your sector.</p>
+      </div>
+
+      <div class="industries-grid">
+        <div class="industry-card reveal"><div class="industry-icon"><i class="fa-solid fa-stethoscope"></i></div><div class="industry-name">Healthcare</div><div class="industry-desc">HIPAA / Australian Privacy Principles compliant systems for clinics, dental, and allied health.</div></div>
+        <div class="industry-card reveal reveal-delay-1"><div class="industry-icon"><i class="fa-solid fa-scale-balanced"></i></div><div class="industry-name">Legal</div><div class="industry-desc">Document security, secure file sharing, and Microsoft 365 setup for law firms.</div></div>
+        <div class="industry-card reveal reveal-delay-2"><div class="industry-icon"><i class="fa-solid fa-graduation-cap"></i></div><div class="industry-name">Education</div><div class="industry-desc">Campus-wide Wi-Fi, classroom AV, student device management, and content filtering.</div></div>
+        <div class="industry-card reveal reveal-delay-3"><div class="industry-icon"><i class="fa-solid fa-store"></i></div><div class="industry-name">Retail &amp; Hospitality</div><div class="industry-desc">POS networks, PCI-DSS payment security, guest Wi-Fi, and CCTV systems.</div></div>
+        <div class="industry-card reveal"><div class="industry-icon"><i class="fa-solid fa-building-columns"></i></div><div class="industry-name">Finance &amp; Accounting</div><div class="industry-desc">Hardened endpoints, MFA enforcement, and audit-ready logging for financial firms.</div></div>
+        <div class="industry-card reveal reveal-delay-1"><div class="industry-icon"><i class="fa-solid fa-helmet-safety"></i></div><div class="industry-name">Construction &amp; Trades</div><div class="industry-desc">Mobile workforce IT, site connectivity, and project management platforms.</div></div>
+        <div class="industry-card reveal reveal-delay-2"><div class="industry-icon"><i class="fa-solid fa-warehouse"></i></div><div class="industry-name">Manufacturing</div><div class="industry-desc">Factory floor networking, ERP integration, and OT/IT security segmentation.</div></div>
+        <div class="industry-card reveal reveal-delay-3"><div class="industry-icon"><i class="fa-solid fa-building"></i></div><div class="industry-name">Professional Services</div><div class="industry-desc">Cloud-first setups, hybrid work tooling, and growth-ready IT for consultancies and agencies.</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       PROCESS SECTION
+  ============================================================ -->
+  <section class="process" id="process">
+    <div class="process-inner">
+      <div class="process-header reveal">
+        <div class="section-label">
+          <div class="dots"><div class="dot"></div><div class="dot"></div></div>
+          HOW WE WORK
+        </div>
+        <h2 class="process-h2">A clear path from problem to peace of mind.</h2>
+        <p class="process-sub">No hand-waving, no surprise invoices. Four steps, fully scoped, fully transparent.</p>
+      </div>
+
+      <div class="process-grid">
+        <div class="process-step reveal">
+          <div class="process-num">01</div>
+          <div class="process-name">Discover</div>
+          <div class="process-desc">Free on-site or remote audit of your network, devices, and security posture. We map what's working and where the gaps are.</div>
+        </div>
+        <div class="process-step reveal reveal-delay-1">
+          <div class="process-num">02</div>
+          <div class="process-name">Plan</div>
+          <div class="process-desc">A written proposal with fixed pricing, timeline, and SLA. You approve before a single dollar is spent.</div>
+        </div>
+        <div class="process-step reveal reveal-delay-2">
+          <div class="process-num">03</div>
+          <div class="process-name">Deploy</div>
+          <div class="process-desc">Our team handles installation, migration, and rollout — typically out-of-hours so your business never stops.</div>
+        </div>
+        <div class="process-step reveal reveal-delay-3">
+          <div class="process-num">04</div>
+          <div class="process-name">Support</div>
+          <div class="process-desc">24/7 monitoring, helpdesk, and quarterly reviews. We stay on it so you can stay on your business.</div>
+        </div>
+      </div>
     </div>
   </section>
 
