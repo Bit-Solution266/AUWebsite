@@ -241,7 +241,8 @@
     .nav-links {
       display: flex;
       align-items: center;
-      gap: 32px;
+      gap: 22px;
+      flex-wrap: nowrap;
     }
     .nav-links > a,
     .nav-links > .nav-dropdown-wrap > a {
@@ -1725,6 +1726,18 @@
     /* ============================================================
        RESPONSIVE
     ============================================================ */
+    @media (max-width: 1280px) {
+      .nav-links { gap: 16px; }
+      .nav-links > a,
+      .nav-links > .nav-dropdown-wrap > a { font-size: 0.85rem; }
+      .nav-cta { padding: 10px 16px; font-size: 0.85rem; }
+    }
+
+    @media (max-width: 1100px) {
+      .nav-links, .nav-cta { display: none; }
+      .nav-hamburger { display: flex; }
+    }
+
     @media (max-width: 1024px) {
       .features .container { grid-template-columns: repeat(2, 1fr); }
       .testimonials-grid { grid-template-columns: repeat(2, 1fr); }
