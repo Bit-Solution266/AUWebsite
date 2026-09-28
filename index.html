@@ -3365,7 +3365,13 @@
        Add a client as {name: "Client Name", logo: "logos/clients/file.png"} (logo optional; the name shows when it is missing).
        Add a photo as {src: "gallery/file.jpg", alt: "short description"}. Put the image files in logos/clients/ and gallery/. */
     const TRUSTED_CLIENTS = [];
-    const GALLERY_PHOTOS = [];
+    const GALLERY_PHOTOS = [
+      {src: "gallery/structured-cabling-fitout.webp", alt: "Structured network cabling run through an office fit-out"},
+      {src: "gallery/cctv-camera-install.webp", alt: "Technician installing a CCTV dome camera"},
+      {src: "gallery/network-cabinet.webp", alt: "Network cabinet with patch panel and switches"},
+      {src: "gallery/office-workstations.webp", alt: "Dual-monitor office workstations set up and running"},
+      {src: "gallery/internet-modem-setup.webp", alt: "Internet modem and router install"}
+    ];
 
     (function () {
       function shuffle(a) { a = a.slice(); for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; }
