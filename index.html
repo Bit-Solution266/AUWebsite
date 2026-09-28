@@ -1801,11 +1801,12 @@
     .trusted-track { display: flex; gap: 56px; width: max-content; animation: trusted-scroll 45s linear infinite; }
     .trusted-viewport:hover .trusted-track { animation-play-state: paused; }
     .trusted-item {
-      display: flex; align-items: center; justify-content: center;
-      height: 56px; min-width: 120px; white-space: nowrap;
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+      gap: 8px; height: 56px; min-width: 0; white-space: nowrap;
       font-weight: 700; font-size: 1.05rem; color: var(--navy); opacity: 0.8;
     }
-    .trusted-item img { max-height: 48px; max-width: 170px; object-fit: contain; filter: grayscale(1); opacity: 0.85; transition: filter .2s, opacity .2s; }
+    .trusted-item .trusted-name { font-weight: 700; font-size: 0.95rem; color: var(--navy); line-height: 1.2; }
+    .trusted-item img { max-height: 26px; max-width: 110px; width: auto; object-fit: contain; flex-shrink: 0; filter: grayscale(1); opacity: 0.85; transition: filter .2s, opacity .2s; }
     .trusted-item:hover img { filter: none; opacity: 1; }
     @keyframes trusted-scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
     @media (prefers-reduced-motion: reduce) {
@@ -3369,22 +3370,22 @@
        Add a client as {name: "Client Name", logo: "logos/clients/file.png"} (logo optional; the name shows when it is missing).
        Add a photo as {src: "gallery/file.jpg", alt: "short description"}. Put the image files in logos/clients/ and gallery/. */
     const TRUSTED_CLIENTS = [
-      {name: "Western Sydney College"},
+      {name: "Western Sydney College", logo: "logos/clients/western-sydney-college.png"},
       {name: "Blue Lotus College"},
-      {name: "UMA College"},
-      {name: "Perth College of Business and Technology"},
-      {name: "Griffin College"},
-      {name: "Canada Cartage"},
+      {name: "UMA College", logo: "logos/clients/uma-college.png"},
+      {name: "Perth College of Business and Technology", logo: "logos/clients/perth-cobt.png"},
+      {name: "Griffin College", logo: "logos/clients/griffin-college.png"},
+      {name: "Canada Cartage", logo: "logos/clients/canada-cartage.png"},
       {name: "Challenger Motor Freight"},
-      {name: "Bison Transport"},
-      {name: "Speedy Transport"},
-      {name: "Maritime-Ontario Freight Lines"},
-      {name: "Erb Group"},
-      {name: "AXIS Dental Group"},
-      {name: "Salvaggio Dentistry"},
-      {name: "Beaumaris Dental Care"},
-      {name: "Mayfield Dental"},
-      {name: "UC Smiles Dentistry"}
+      {name: "Bison Transport", logo: "logos/clients/bison-transport.png"},
+      {name: "Speedy Transport", logo: "logos/clients/speedy-transport.png"},
+      {name: "Maritime-Ontario Freight Lines", logo: "logos/clients/maritime-ontario.png"},
+      {name: "Erb Group", logo: "logos/clients/erb-group.svg"},
+      {name: "AXIS Dental Group", logo: "logos/clients/axis-dental.png"},
+      {name: "Salvaggio Dentistry", logo: "logos/clients/salvaggio-dentistry.png"},
+      {name: "Beaumaris Dental Care", logo: "logos/clients/beaumaris-dental.png"},
+      {name: "Mayfield Dental", logo: "logos/clients/mayfield-dental.png"},
+      {name: "UC Smiles Dentistry", logo: "logos/clients/uc-smiles.png"}
     ];
     const GALLERY_PHOTOS = [
       {src: "gallery/structured-cabling-fitout.webp", alt: "Structured network cabling run through an office fit-out"},
@@ -3399,9 +3400,10 @@
       function clientTile(c) {
         const d = document.createElement('div'); d.className = 'trusted-item';
         if (c.logo) {
-          const img = document.createElement('img'); img.src = c.logo; img.alt = c.name; img.loading = 'lazy';
-          img.onerror = function () { d.textContent = c.name; };
-          d.appendChild(img);
+          const img = document.createElement('img'); img.src = c.logo; img.alt = ''; img.loading = 'lazy';
+          const label = document.createElement('span'); label.className = 'trusted-name'; label.textContent = c.name;
+          img.onerror = function () { d.replaceChildren(); d.textContent = c.name; };
+          d.appendChild(img); d.appendChild(label);
         } else { d.textContent = c.name; }
         return d;
       }
