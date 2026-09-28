@@ -1786,6 +1786,43 @@
       .offices-grid { grid-template-columns: 1fr; }
       .why-cards { grid-template-columns: 1fr; }
     }
+    /* ============================================================
+       TRUSTED BY (scrolling strip) + GALLERY
+       Both are filled from the lists at the bottom of the page and stay hidden while a list is empty.
+    ============================================================ */
+    .trusted-strip { background: #fff; padding: 48px 0 40px; overflow: hidden; }
+    .trusted-strip[hidden], .gallery[hidden] { display: none; }
+    .trusted-strip .section-label { justify-content: center; }
+    .trusted-viewport {
+      overflow: hidden;
+      -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+              mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+    }
+    .trusted-track { display: flex; gap: 56px; width: max-content; animation: trusted-scroll 45s linear infinite; }
+    .trusted-viewport:hover .trusted-track { animation-play-state: paused; }
+    .trusted-item {
+      display: flex; align-items: center; justify-content: center;
+      height: 56px; min-width: 120px; white-space: nowrap;
+      font-weight: 700; font-size: 1.05rem; color: var(--navy); opacity: 0.8;
+    }
+    .trusted-item img { max-height: 48px; max-width: 170px; object-fit: contain; filter: grayscale(1); opacity: 0.85; transition: filter .2s, opacity .2s; }
+    .trusted-item:hover img { filter: none; opacity: 1; }
+    @keyframes trusted-scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+    @media (prefers-reduced-motion: reduce) {
+      .trusted-track { animation: none; flex-wrap: wrap; justify-content: center; width: auto; gap: 24px 40px; padding: 0 16px; }
+      .trusted-item[aria-hidden="true"] { display: none; }
+    }
+
+    .gallery { background: #f4f7fb; padding: 80px 5%; }
+    .gallery-inner { max-width: 1200px; margin: 0 auto; }
+    .gallery-header { text-align: center; margin-bottom: 40px; }
+    .gallery-header .section-label { justify-content: center; }
+    .gallery-h2 { font-size: clamp(1.8rem, 3.5vw, 2.6rem); font-weight: 700; color: var(--ink, #0f1c39); line-height: 1.2; }
+    .gallery-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(260px, 100%), 1fr)); gap: 16px; }
+    .gallery-grid figure { margin: 0; border-radius: 12px; overflow: hidden; background: #dde3ee; aspect-ratio: 4 / 3; }
+    .gallery-grid img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .4s; }
+    .gallery-grid figure:hover img { transform: scale(1.04); }
+
   </style>
 </head>
 <body>
@@ -2454,6 +2491,33 @@
         </div>
       </div>
 
+    </div>
+  </section>
+
+  <!-- ============================================================
+       TRUSTED BY (scrolling strip)
+  ============================================================ -->
+  <section class="trusted-strip" id="trusted" hidden>
+    <div class="section-label">
+      <div class="dots"><div class="dot"></div><div class="dot"></div></div>
+      TRUSTED BY
+    </div>
+    <div class="trusted-viewport"><div class="trusted-track" id="trusted-track"></div></div>
+  </section>
+
+  <!-- ============================================================
+       GALLERY
+  ============================================================ -->
+  <section class="gallery" id="gallery" hidden>
+    <div class="gallery-inner">
+      <div class="gallery-header reveal">
+        <div class="section-label">
+          <div class="dots"><div class="dot"></div><div class="dot"></div></div>
+          GALLERY
+        </div>
+        <h2 class="gallery-h2">Our Work On Site</h2>
+      </div>
+      <div class="gallery-grid" id="gallery-grid"></div>
     </div>
   </section>
 
@@ -3292,6 +3356,42 @@
         if (lenSq === 0) return Math.hypot(px - x1, py - y1);
         const t = Math.max(0, Math.min(1, ((px - x1) * dx + (py - y1) * dy) / lenSq));
         return Math.hypot(px - (x1 + t * dx), py - (y1 + t * dy));
+      }
+    })();
+  </script>
+
+  <script>
+    /* Trusted-by names and gallery photos.
+       Add a client as {name: "Client Name", logo: "logos/clients/file.png"} (logo optional; the name shows when it is missing).
+       Add a photo as {src: "gallery/file.jpg", alt: "short description"}. Put the image files in logos/clients/ and gallery/. */
+    const TRUSTED_CLIENTS = [];
+    const GALLERY_PHOTOS = [];
+
+    (function () {
+      function shuffle(a) { a = a.slice(); for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; }
+      function clientTile(c) {
+        const d = document.createElement('div'); d.className = 'trusted-item';
+        if (c.logo) {
+          const img = document.createElement('img'); img.src = c.logo; img.alt = c.name; img.loading = 'lazy';
+          img.onerror = function () { d.textContent = c.name; };
+          d.appendChild(img);
+        } else { d.textContent = c.name; }
+        return d;
+      }
+      if (TRUSTED_CLIENTS.length) {
+        const track = document.getElementById('trusted-track');
+        const order = shuffle(TRUSTED_CLIENTS);
+        // Two copies back to back so the strip loops without a gap; the copy is hidden from screen readers.
+        [0, 1].forEach(function (copy) { order.forEach(function (c) { const t = clientTile(c); if (copy) t.setAttribute('aria-hidden', 'true'); track.appendChild(t); }); });
+        document.getElementById('trusted').hidden = false;
+      }
+      if (GALLERY_PHOTOS.length) {
+        const grid = document.getElementById('gallery-grid');
+        GALLERY_PHOTOS.forEach(function (ph) {
+          const f = document.createElement('figure'); const img = document.createElement('img');
+          img.src = ph.src; img.alt = ph.alt || ''; img.loading = 'lazy'; f.appendChild(img); grid.appendChild(f);
+        });
+        document.getElementById('gallery').hidden = false;
       }
     })();
   </script>
