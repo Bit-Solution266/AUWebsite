@@ -1822,6 +1822,10 @@
     .gallery-grid figure { margin: 0; border-radius: 12px; overflow: hidden; background: #dde3ee; aspect-ratio: 4 / 3; }
     .gallery-grid img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .4s; }
     .gallery-grid figure:hover img { transform: scale(1.04); }
+    @media (min-width: 900px) {
+      .gallery-grid { grid-template-columns: repeat(4, 1fr); }
+      .gallery-grid figure:first-child { grid-column: span 2; grid-row: span 2; aspect-ratio: auto; }
+    }
 
   </style>
 </head>
